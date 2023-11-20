@@ -1,0 +1,78 @@
+<div class="scroll-form row">
+  <div class="col-md-6 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="edit ? actualiza() : add()">
+
+          <!-- Grupo -->
+          <div class="card-body">
+            <input type="text" formControlName="Grupo" [(ngModel)]="search" placeholder="Grupo:" class="form-control"
+              autofocus>
+          </div>
+
+          <!-- Album -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="inputGroupSelect01">Album</label>
+              <select formControlName="idAlbum" [(ngModel)]="cancionesAlbum.idAlbum" class="form-control"
+                id="inputGroupSelect01"
+                [class.is-invalid]="form.get('idAlbum')?.invalid && form.get('idAlbum')?.touched"
+                [class.is-valid]="form.get('idAlbum')?.valid">
+                <option selected disabled value="">Selecciona un Album</option>
+                <option *ngFor="let Album of Album | filter:search" value="{{Album.idAlbum}}">{{Album.Nombre}}</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idAlbum')?.hasError('required') && form.get('idAlbum')?.touched">El campo <span
+                class="alerta">ALBUM</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Numero -->
+          <div class="card-body">
+            <input type="number" formControlName="Numero" [(ngModel)]="cancionesAlbum.Numero" placeholder="Numero:"
+              class="form-control" [class.is-invalid]="form.get('Numero')?.invalid && form.get('Numero')?.touched"
+              [class.is-valid]="form.get('Numero')?.valid">
+
+            <span *ngIf="form.get('Numero')?.hasError('required') && form.get('Numero')?.touched">El campo <span
+                class="alerta">NUMERO</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Cancion -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="inputGroupSelect02">Cancion</label>
+              <select formControlName="idCancion" [(ngModel)]="cancionesAlbum.idCancion" class="form-control"
+                id="inputGroupSelect02"
+                [class.is-invalid]="form.get('idCancion')?.invalid && form.get('idCancion')?.touched"
+                [class.is-valid]="form.get('idCancion')?.valid">
+                <option selected disabled value="">Selecciona una Cancion</option>
+                <option *ngFor="let Canciones of Canciones | filter:search" value="{{Canciones.idCancion}}">
+                  {{Canciones.Nombre}}</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idCancion')?.hasError('required') && form.get('idCancion')?.touched">El campo <span
+                class="alerta">CANCION</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+            <button routerLink="/repertorio/canciones_Album" type="button" class="btn btn-primary">Regresar</button>
+          </div>
+          <!-- <button type="button" class="btn btn-success" (click)="edit ? actualiza() : add()">Aceptar</button>
+          <a href="/canciones_Album" type="button" class="btn btn-primary">Regresar</a> -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 inicio-card">
+    <div class="card card-body text-center">
+      <h3 style="text-transform: uppercase;">
+        {{cancionesAlbum.Codigo}} - {{cancionesAlbum.idCancion == '' ? 'Canción' : cancionesAlbum.idCancion}}
+      </h3>
+      <p>{{cancionesAlbum.idAlbum == '' ? 'Álbum' : cancionesAlbum.idAlbum}}</p>
+      <p>{{cancionesAlbum.Numero == '' ? 'Número' : cancionesAlbum.Numero}}</p>
+    </div>
+  </div>
+</div>

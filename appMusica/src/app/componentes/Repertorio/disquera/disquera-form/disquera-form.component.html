@@ -1,0 +1,101 @@
+<div class="scroll-form row">
+  <div class="col-md-6 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="edit ? actualiza() : add()">
+
+          <!-- Nombre -->
+          <div class="card-body">
+            <input type="text" formControlName="Nombre" [(ngModel)]="disquera.Nombre"
+              placeholder="Nombre de la disquera:" class="form-control" autofocus
+              [class.is-invalid]="form.get('Nombre')?.invalid && form.get('Nombre')?.touched"
+              [class.is-valid]="form.get('Nombre')?.valid">
+
+            <span *ngIf="form.get('Nombre')?.hasError('required') && form.get('Nombre')?.touched">El campo <span
+                class="alerta">NOMBRE</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Fundador -->
+          <div class="card-body">
+            <input type="text" formControlName="Fundador" [(ngModel)]="disquera.Fundador" placeholder="Fundadores:"
+              class="form-control" [class.is-invalid]="form.get('Fundador')?.invalid && form.get('Fundador')?.touched"
+              [class.is-valid]="form.get('Fundador')?.valid">
+
+            <span *ngIf="form.get('Fundador')?.hasError('required') && form.get('Fundador')?.touched">El campo <span
+                class="alerta">FUNDADOR</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Fundacion -->
+          <div class="card-body">
+            <div class="input-group">
+              <label for="input-Disquera" class="input-group-text">Fecha de Fundacion</label>
+              <input id="input-Disquera" type="date" [(ngModel)]="disquera.Fundacion" formControlName="Fundacion"
+                class="form-control"
+                [class.is-invalid]="form.get('Fundacion')?.invalid && form.get('Fundacion')?.touched"
+                [class.is-valid]="form.get('Fundacion')?.valid" />
+            </div>
+
+            <span *ngIf="form.get('Fundacion')?.hasError('required') && form.get('Fundacion')?.touched">El campo <span
+                class="alerta">FUNDACION</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Generos -->
+          <div class="card-body">
+            <textarea formControlName="Generos" [(ngModel)]="disquera.Generos" placeholder="Generos:" rows="2"
+              class="form-control" [class.is-invalid]="form.get('Generos')?.invalid && form.get('Generos')?.touched"
+              [class.is-valid]="form.get('Generos')?.valid"></textarea>
+
+            <span *ngIf="form.get('Generos')?.hasError('required') && form.get('Generos')?.touched">El campo <span
+                class="alerta">GENEROS</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Pais -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="inputGroupSelect02">Pais</label>
+              <select formControlName="idPais" [(ngModel)]="disquera.idPais" class="form-control"
+                id="inputGroupSelect02" [class.is-invalid]="form.get('idPais')?.invalid && form.get('idPais')?.touched"
+                [class.is-valid]="form.get('idPais')?.valid">
+                <option selected disabled value="">Selecciona un Pais</option>
+                <option *ngFor="let pais of Pais" value="{{pais.idPais}}">{{pais.Nombre}}</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idPais')?.hasError('required') && form.get('idPais')?.touched">El campo <span
+                class="alerta">PAIS</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Foto -->
+          <div class="card-body">
+            <input type="url" formControlName="Logo" [(ngModel)]="disquera.Logo" placeholder="Foto:"
+              class="form-control" [class.is-invalid]="form.get('Logo')?.invalid && form.get('Logo')?.touched"
+              [class.is-valid]="form.get('Logo')?.valid">
+
+            <span *ngIf="form.get('Logo')?.hasError('required') && form.get('Logo')?.touched">El campo <span
+                class="alerta">LOGO</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+            <button routerLink="/repertorio/disquera" type="button" class="btn btn-primary">Regresar</button>
+          </div>
+          <!-- <button type="button" class="btn btn-success" (click)="edit ? actualiza() : add()">Aceptar</button>
+          <a href="/disquera" type="button" class="btn btn-primary">Regresar</a> -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 inicio-card">
+    <div class="card card-body text-center">
+      <img [src]="disquera.Logo == '' ? '/assets/noImagen.png' : disquera.Logo " class="card-img-top">
+      <h3 style="text-transform: uppercase;">
+        {{disquera.idDisquera}} - {{disquera.Nombre == '' ? 'Nombre de la Disquera' : disquera.Nombre}}
+      </h3>
+      <p>{{disquera.Fundador == '' ? 'Fundadores' : disquera.Fundador}}</p>
+      <p>{{disquera.Fundacion == ''? 'Fundación' : (disquera.Fundacion | date: 'dd / MMMM / yyyy')}}</p>
+      <p>{{disquera.Generos == '' ? 'Géneros' : disquera.Generos}}</p>
+      <p>{{disquera.idPais == '' ? 'Pais' : disquera.idPais}}</p>
+    </div>
+  </div>
+</div>

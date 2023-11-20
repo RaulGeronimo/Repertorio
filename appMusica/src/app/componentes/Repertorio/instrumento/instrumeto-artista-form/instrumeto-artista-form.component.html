@@ -1,0 +1,68 @@
+<div class="scroll-form row">
+  <div class="col-md-6 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="edit ? actualiza() : add()">
+
+          <!-- Artista -->
+          <div class="card-body">
+            <div class="input-group">
+              <!-- <label class="input-group-text" for="inputGroupSelect02">Artista</label> -->
+              <input type="text" formControlName="Artista" [(ngModel)]="search" placeholder="Grupo:"
+                class="form-control" autofocus
+                [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
+                [class.is-valid]="form.get('idArtista')?.valid">
+
+              <select formControlName="idArtista" [(ngModel)]="instrumento_Artista.idArtista" class="form-control"
+                id="inputGroupSelect02"
+                [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
+                [class.is-valid]="form.get('idArtista')?.valid">
+                <option selected disabled value="">Selecciona un Artista</option>
+                <option *ngFor="let artista of Artista | filter:search" value="{{artista.Codigo}}">
+                  {{artista.NombreArtistico}} ({{artista.Grupo}})</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idArtista')?.hasError('required') && form.get('idArtista')?.touched">El campo <span
+                class="alerta">ARTISTA</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Instrumentos -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="inputGroupSelect03">Instrumento</label>
+              <select formControlName="idInstrumento" [(ngModel)]="instrumento_Artista.idInstrumento"
+                class="form-control" id="inputGroupSelect03"
+                [class.is-invalid]="form.get('idInstrumento')?.invalid && form.get('idInstrumento')?.touched"
+                [class.is-valid]="form.get('idInstrumento')?.valid">
+                <option selected disabled value="">Selecciona un Instrumento</option>
+                <option *ngFor="let instrumentos of Instrumentos" value="{{instrumentos.idInstrumento}}">
+                  {{instrumentos.Nombre}}</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idInstrumento')?.hasError('required') && form.get('idInstrumento')?.touched">El campo
+              <span class="alerta">INSTRUMENTO</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+            <button routerLink="/repertorio/instrumento_Artista" type="button" class="btn btn-primary">Regresar</button>
+          </div>
+          <!-- <button type="button" class="btn btn-success" (click)="edit ? actualiza() : add()">Aceptar</button>
+            <a href="/instrumento_Artista" type="button" class="btn btn-primary">Regresar</a> -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 inicio-card">
+    <div class="card card-body text-center">
+      <h3 style="text-transform: uppercase;">
+        {{instrumento_Artista.Codigo}} -
+        {{instrumento_Artista.idArtista == '' ? 'Artista' : instrumento_Artista.idArtista}}
+      </h3>
+      <p>{{instrumento_Artista.idInstrumento == '' ? 'Instrumento' : instrumento_Artista.idInstrumento}}</p>
+    </div>
+  </div>
+</div>

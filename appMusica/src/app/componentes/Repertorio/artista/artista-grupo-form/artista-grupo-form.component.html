@@ -1,0 +1,94 @@
+<div class="scroll-form row">
+  <div class="col-md-6 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="edit ? actualiza() : add()">
+          <!-- Artista -->
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" formControlName="Artista" [(ngModel)]="search" placeholder="Artista:"
+                class="form-control" autofocus
+                [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
+                [class.is-valid]="form.get('idArtista')?.valid">
+
+              <select formControlName="idArtista" [(ngModel)]="artista_Grupo.idArtista" class="form-control"
+                id="inputGroupSelect02"
+                [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
+                [class.is-valid]="form.get('idArtista')?.valid">
+                <option selected disabled value="">Selecciona un Artista</option>
+                <option *ngFor="let artista of Artista | filter:search" value="{{artista.idArtista}}">
+                  {{artista.NombreArtistico}}</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idArtista')?.hasError('required') && form.get('idArtista')?.touched">El campo <span
+                class="alerta">ARTISTA</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Grupo -->
+          <div class="card-body">
+            <div class="input-group">
+              <!-- <label class="input-group-text" for="inputGroupSelect01">Grupo</label> -->
+              <input type="text" formControlName="Grupo" [(ngModel)]="searchGrupo" placeholder="Grupo:"
+                class="form-control" [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
+                [class.is-valid]="form.get('idGrupo')?.valid">
+
+              <select formControlName="idGrupo" [(ngModel)]="artista_Grupo.idGrupo" class="form-control"
+                id="inputGroupSelect01"
+                [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
+                [class.is-valid]="form.get('idGrupo')?.valid">
+                <option selected disabled value="">Selecciona un Grupo</option>
+                <option *ngFor="let Grupo of Grupo | filter:searchGrupo" value="{{Grupo.idGrupo}}">{{Grupo.Nombre}}
+                </option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idGrupo')?.hasError('required') && form.get('idGrupo')?.touched">El campo <span
+                class="alerta">GRUPO</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Inicio -->
+          <div class="card-body">
+            <div class="input-group">
+              <label for="Entrada" class="input-group-text">Fecha de Entrada</label>
+              <input id="Entrada" type="date" [(ngModel)]="artista_Grupo.FechaInicio" formControlName="FechaInicio"
+                class="form-control"
+                [class.is-invalid]="form.get('FechaInicio')?.invalid && form.get('FechaInicio')?.touched"
+                [class.is-valid]="form.get('FechaInicio')?.valid" />
+            </div>
+
+            <span *ngIf="form.get('FechaInicio')?.hasError('required') && form.get('FechaInicio')?.touched">El campo
+              <span class="alerta">INICIO</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Fin -->
+          <div class="card-body">
+            <div class="input-group">
+              <label for="Salida" class="input-group-text">Fecha Salida</label>
+              <input id="Salida" type="date" [(ngModel)]="artista_Grupo.FechaFin" formControlName="FechaFin"
+                class="form-control" />
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+            <button routerLink="/repertorio/artista_Grupo" type="button" class="btn btn-primary">Regresar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 inicio-card">
+    <div class="card card-body text-center">
+      <h3 style="text-transform: uppercase;">
+        {{artista_Grupo.Codigo}} - {{artista_Grupo.idArtista == '' ? 'Artista' : artista_Grupo.idArtista}}
+      </h3>
+      <p>{{artista_Grupo.idGrupo == '' ? 'Grupo' : artista_Grupo.idGrupo}}</p>
+      <p>{{artista_Grupo.FechaInicio == ''? 'Fecha Inicio' : (artista_Grupo.FechaInicio | date: 'dd / MMMM / yyyy')}}
+      </p>
+      <p>{{artista_Grupo.FechaFin == ''? 'Fecha Fin' : (artista_Grupo.FechaFin | date: 'dd / MMMM / yyyy')}}</p>
+    </div>
+  </div>
+</div>

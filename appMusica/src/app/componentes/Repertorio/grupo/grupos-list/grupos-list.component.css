@@ -1,0 +1,67 @@
+.box {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+@media (max-width: 1400px) and (min-width: 380px) {
+  .box {
+    height: max-content;
+  }
+
+  .box img {
+    max-height: 700px;
+  }
+}
+
+/* Tabla */
+@media only screen and (max-width: 768px) {
+  td:nth-of-type(1):before {
+    content: "Número";
+  }
+
+  td:nth-of-type(2):before {
+    content: "Nombre";
+  }
+
+  td:nth-of-type(3):before {
+    content: "Álbumes";
+  }
+
+  td:nth-of-type(4):before {
+    content: "Número Canciones";
+  }
+
+  td:nth-of-type(5):before {
+    content: "Origen";
+  }
+
+  td:nth-of-type(6):before {
+    content: "Inicio";
+  }
+
+  td:nth-of-type(7):before {
+    content: "Sellos";
+  }
+
+  td:nth-of-type(8):before {
+    content: "Estado";
+  }
+
+  td:nth-of-type(10):before {
+    content: "Idioma";
+  }
+
+  td:nth-of-type(9):before {
+    content: "Acciones";
+  }
+}

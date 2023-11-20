@@ -1,0 +1,137 @@
+<div class="inicio-card input-group flex-nowrap">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+    aria-expanded="false">Agregar</button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" routerLink="/repertorio/canciones/agregar">Canción</a></li>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+    <li><a class="dropdown-item" routerLink="/repertorio/album/agregar">Álbum</a></li>
+    <li><a class="dropdown-item" routerLink="/repertorio/canciones_Album/agregar">Canción</a></li>
+  </ul>
+  <a routerLink="/repertorio/grupo" type="button" class="btn btn-success">Regresar</a>
+
+  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+  <input type="text" class="form-control bg-dark text-white" placeholder="Buscar" aria-label="Username"
+    aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
+  <a type="button" class="btn btn-outline-light" (click)="tabla=!tabla">Otra Vista</a>
+</div>
+
+<div class="container-scroll row" *ngIf="tabla; else lista">
+  <div class="col-md-5 margen">
+    <div class="card card-body text-center bg-dark">
+      <img class="grupo" [src]="Grupo.Logo == '' ? '/assets/noImagen.png' : Grupo.Logo " alt="Imagen del Grupo">
+    </div>
+  </div>
+
+  <div class="col-md-7 margen">
+    <div class="card text-center bg-dark">
+      <div class="card-body text-white">
+        <div class="text-white d-flex justify-content-between align-items-center text-center">
+          <a [routerLink]="['/repertorio/grupo/actualizar', Grupo.idGrupo]" class="btn btn-outline-success">Editar Grupo</a>
+        </div>
+        <p><strong>Álbums: </strong>{{Grupo.Albumes}}</p>
+        <p><strong>Canciones: </strong>{{Grupo.Cancion}}</p>
+        <p style="font-weight: bold;">Origen</p>
+        <p>{{Grupo.Origen}}</p>
+        <p style="font-weight: bold;">Genero</p>
+        <p>{{Grupo.Genero}}</p>
+        <p style="font-weight: bold;">Sellos Discograficos</p>
+        <p>{{Grupo.Sellos}}</p>
+        <p style="font-weight: bold;">Estado</p>
+        <p>{{Grupo.Estado}}</p>
+        <p style="font-weight: bold;">Sitio Web</p>
+        <p><a href="{{Grupo.SitioWeb}}" target="_blank">{{Grupo.SitioWeb}}</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4" *ngFor="let album of Album | filter:search" style="margin-bottom: 1.5rem;">
+    <div class="card text-center">
+      <div class="card-header text-white d-flex justify-content-between align-items-center">
+        {{album.Nombre}}
+
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button class="btn btn-danger" (click)="borrar(album.idAlbum)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+          <button [routerLink]="['/repertorio/buscaCancion_Album', album.idAlbum]" class="btn btn-success btn-block">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button class="btn btn-primary" (click)="show = !show">
+            <i class="fa-solid fa-circle-info"></i>
+          </button>
+        </div>
+
+      </div>
+      <img [src]="album.Portada == '' ? '/assets/noImagen.png' : album.Portada " alt="Imagen del Album">
+      <div class="card-body" *ngIf="show">
+        <p style="font-weight: bold;">Grabacion</p>
+        <p>{{album.Grabacion}}</p>
+        <p style="font-weight: bold;">Canciones</p>
+        <p>{{album.Canciones}}</p>
+        <p style="font-weight: bold;">Duración</p>
+        <p>{{album.Duracion}}</p>
+        <p style="font-weight: bold;">Lanzamiento</p>
+        <p>{{album.Lanzamiento | date: 'dd / MMMM / yyyy'}}</p>
+        <p style="font-weight: bold;">Disquera</p>
+        <p>{{album.Disquera}}</p>
+        <a [routerLink]="['/repertorio/album/actualizar', album.idAlbum]" class="btn btn-info btn-block">Editar</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Tabla -->
+<ng-template #lista>
+  <label>Total: {{total}} registros</label>
+  <div class="container-scroll">
+    <div class="table-responsive">
+      <table id="myTable" class="table table-hover table-dark resp">
+        <thead>
+          <tr>
+            <th (click)="setOrder('idAlbum')" scope="col">#</th>
+            <th (click)="setOrder('Nombre')" scope="col">Nombre</th>
+            <th (click)="setOrder('Canciones')" scope="col">No. Canciones</th>
+            <th (click)="setOrder('Disquera')" scope="col">Disquera</th>
+            <th (click)="setOrder('Duracion')" scope="col">Duracion</th>
+            <th (click)="setOrder('Lanzamiento')" scope="col">Lanzamiento</th>
+            <th (click)="setOrder('Grabacion')" scope="col">Grabacion</th>
+            <th (click)="setOrder('Genero')" scope="col">Genero</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let album of Album | orderBy: order:reverse:caseInsensitive | filter:search; index as i">
+            <!-- <td>{{i+1}}</td> -->
+            <td>{{album.idAlbum}}</td>
+            <td>{{album.Nombre}}</td>
+            <td>{{album.Canciones}}</td>
+            <td>{{album.Disquera}}</td>
+            <td>{{album.Duracion}}</td>
+            <td>{{album.Lanzamiento | date: 'dd / MMMM / yyyy'}}</td>
+            <td>{{album.Grabacion}}</td>
+            <td>{{album.Genero}}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a [routerLink]="['/repertorio/album/actualizar', album.idAlbum]" class="btn btn-info btn-block">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+
+                <button [routerLink]="['/repertorio/buscaCancion_Album', album.idAlbum]" class="btn btn-success btn-block">
+                  <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button class="btn btn-danger" (click)="borrar(album.idAlbum)">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>

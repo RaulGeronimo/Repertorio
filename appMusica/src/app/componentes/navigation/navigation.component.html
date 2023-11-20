@@ -1,0 +1,132 @@
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/grupo']">
+      <img src="favicon.ico" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+      Música
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+      aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+      aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Repertorio de Música</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+
+            <!-- Album -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Album
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['album']">Lista</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['canciones_Album/agregar']">Agregar
+                  Canción</a></li>
+            </ul>
+          </li>
+
+          <!-- Artista -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Artista
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['artista']">Lista</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" routerLinkActive="active"
+                  [routerLink]="['instrumento_Artista/agregar']">Agregar
+                  Instrumento</a></li>
+            </ul>
+          </li>
+
+          <!-- Canciones -->
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['canciones']">Canciones</a>
+          </li>
+
+          <!-- Disquera -->
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['disquera']">Disquera</a>
+          </li>
+
+          <!-- Grupo -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Grupo
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['grupo']">Lista</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['artista_Grupo/agregar']">Agregar
+                  Integrante</a></li>
+            </ul>
+          </li>
+
+          <!-- Instrumento -->
+          <div *ngIf="rol == 1">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['instrumento']">Instrumento</a>
+            </li>
+          </div>
+
+          <!-- Pais -->
+          <div *ngIf="rol == 1">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['pais']">Pais</a>
+            </li>
+          </div>
+
+          <!-- Auditoria -->
+          <div *ngIf="rol == 1">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['auditoria']">Auditoria</a>
+            </li>
+          </div>
+
+          <!-- Cerrar Sesion -->
+          <hr class="hr hr-blurry" />
+          <li class="nav-item">
+            <p class="nav-link">Usuario: {{user}}</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link close" routerLinkActive="active" (click)="Salir()">Cerrar Sesion</a>
+          </li>
+
+          <!-- Otros Proyectos -->
+          <div *ngIf="rol == 1">
+            <hr class="hr hr-blurry" />
+            <li class="nav-item dropdown" s>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Otros Proyectos
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" [href]="['https://repertorio-anime.web.app/']" target="_blank">Repertorio
+                    Anime</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" [href]="['https://repertorio-series.web.app/']" target="_blank">Repertorio
+                    Series</a></li>
+              </ul>
+            </li>
+          </div>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

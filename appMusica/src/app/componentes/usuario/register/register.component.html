@@ -1,0 +1,126 @@
+<div class="container p-4 inicio">
+  <div class="row justify-content-center align-items-center form-login">
+    <div class="col-7 col-auto p-3">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="validateUser()">
+            <div class="card-body text-center">
+              <h1>Registrar Usuario</h1>
+              <p>Por favor rellena todos los cambos solicitados.</p>
+            </div>
+            <div class="row">
+              <!-- Nombre -->
+              <div class="col">
+                <div class="card-body">
+                  <label for="Nombre" class="form-label">Nombre(s):</label>
+                  <input id="Nombre" type="text" formControlName="Nombre" [(ngModel)]="user.Nombre" class="form-control"
+                    [class.is-invalid]="form.get('Nombre')?.invalid && form.get('Nombre')?.touched"
+                    [class.is-valid]="form.get('Nombre')?.valid && form.get('Nombre')?.touched">
+
+                  <span *ngIf="form.get('Nombre')?.hasError('required') && form.get('Nombre')?.touched">
+                    El campo <span class="alerta">Nombre</span> es <strong>Requerido</strong>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Paterno -->
+              <div class="col">
+                <div class="card-body">
+                  <label for="ApellidoPaterno" class="form-label">Apellido Paterno:</label>
+                  <input id="ApellidoPaterno" type="text" formControlName="ApellidoPaterno"
+                    [(ngModel)]="user.ApellidoPaterno" class="form-control"
+                    [class.is-invalid]="form.get('ApellidoPaterno')?.invalid && form.get('ApellidoPaterno')?.touched"
+                    [class.is-valid]="form.get('ApellidoPaterno')?.valid && form.get('ApellidoPaterno')?.touched">
+
+                  <span
+                    *ngIf="form.get('ApellidoPaterno')?.hasError('required') && form.get('ApellidoPaterno')?.touched">
+                    El campo <span class="alerta">Paterno</span> es <strong>Requerido</strong>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Materno -->
+              <div class="col">
+                <div class="card-body">
+                  <label for="ApellidoMaterno" class="form-label">Apellido Materno:</label>
+                  <input id="ApellidoMaterno" type="text" formControlName="ApellidoMaterno"
+                    [(ngModel)]="user.ApellidoMaterno" class="form-control"
+                    [class.is-invalid]="form.get('ApellidoMaterno')?.invalid && form.get('ApellidoMaterno')?.touched"
+                    [class.is-valid]="form.get('ApellidoMaterno')?.valid && form.get('ApellidoMaterno')?.touched">
+
+                  <span
+                    *ngIf="form.get('ApellidoMaterno')?.hasError('required') && form.get('ApellidoMaterno')?.touched">
+                    El campo <span class="alerta">Materno</span> es <strong>Requerido</strong>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Usuario -->
+              <div class="col">
+                <div class="card-body">
+                  <label for="Usuario" class="form-label">Usuario:</label>
+                  <input id="Usuario" type="text" formControlName="Usuario" [(ngModel)]="user.Usuario"
+                    class="form-control"
+                    [class.is-invalid]="form.get('Usuario')?.invalid && form.get('Usuario')?.touched"
+                    [class.is-valid]="form.get('Usuario')?.valid && form.get('Usuario')?.touched">
+
+                  <span *ngIf="form.get('Usuario')?.hasError('required') && form.get('Usuario')?.touched">
+                    El campo <span class="alerta">Usuario</span> es <strong>Requerido</strong>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Correo -->
+              <div class="col">
+                <div class="card-body">
+                  <label for="Correo" class="form-label">Correo</label>
+                  <input id="Correo" type="text" formControlName="Correo" [(ngModel)]="user.Correo" class="form-control"
+                    [class.is-invalid]="form.get('Correo')?.invalid && form.get('Correo')?.touched"
+                    [class.is-valid]="form.get('Correo')?.valid && form.get('Correo')?.touched">
+
+                  <span *ngIf="form.get('Correo')?.hasError('required') && form.get('Correo')?.touched">
+                    El campo <span class="alerta">Correo</span> es <strong>Requerido</strong>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="col">
+                <div class="card-body">
+                  <label for="password" class="form-label">Password:</label>
+                  <input id="password" [type]="fieldTextType ? 'text' : 'password'" formControlName="Password"
+                    [(ngModel)]="user.Password" class="form-control"
+                    [class.is-invalid]="form.get('Password')?.invalid && form.get('Password')?.touched"
+                    [class.is-valid]="form.get('Password')?.valid && form.get('Password')?.touched">
+
+                  <span *ngIf="form.get('Password')?.hasError('required') && form.get('Password')?.touched">
+                    El campo <span class="alerta">Password</span> es <strong>Requerido</strong>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="vwPassword" (click)="toggleFieldTextType()">
+                <label class="form-check-label" for="vwPassword">Ver Contraseña</label>
+              </div>
+            </div>
+
+            <!--Botones-->
+            <div class="card-body">
+              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+                <a class="btn btn-warning" routerLink="/login">Regresar</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

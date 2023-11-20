@@ -1,0 +1,42 @@
+<div class="inicio-card input-group flex-nowrap">
+    <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+    <input type="text" class="form-control bg-dark text-white" placeholder="Buscar" aria-label="Username"
+        aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
+</div>
+
+<label>Total: {{total}} registros</label>
+<div class="container-scroll">
+    <div class="table-responsive">
+        <div class="table-responsive">
+            <table class="table table-hover table-dark resp" id="myTable">
+                <thead>
+                    <tr>
+                        <th (click)="setOrder('id')" scope="col">#</th>
+                        <th (click)="setOrder('nombreTabla')" scope="col">Tabla</th>
+                        <th (click)="setOrder('nombre')" scope="col">Nombre</th>
+                        <th (click)="setOrder('usuario')" scope="col">Usuario</th>
+                        <th (click)="setOrder('proceso')" scope="col">Proceso</th>
+                        <th (click)="setOrder('idRegistro')" scope="col">idRegistro</th>
+                        <th (click)="setOrder('modificado')" scope="col">Modificado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let canciones of lista | orderBy: order:reverse:caseInsensitive | filter:search; index as i;">
+                        <!--  | paginate: { itemsPerPage: 50, currentPage: p }  -->
+                        <!-- <td>{{i+1}}</td> -->
+                        <td>{{canciones.id}}</td>
+                        <td>{{canciones.nombreTabla}}</td>
+                        <td>{{canciones.nombre}}</td>
+                        <td>{{canciones.usuario}}</td>
+                        <td>{{canciones.proceso}}</td>
+                        <td>{{canciones.idRegistro}}</td>
+                        <td>{{canciones.modificado | date: 'dd / MMMM / yyyy h:mm:ss a'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente"
+            previousLabel="Anterior"></pagination-controls> -->
+        </div>
+    </div>
+</div>

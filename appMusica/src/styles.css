@@ -1,0 +1,196 @@
+body {
+  background-image: url(/assets/fondo.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: #000000 !important;
+  opacity: 0.7 !important;
+}
+
+.form-login {
+  height: 80vh;
+}
+
+button,
+a {
+  margin-right: 4px;
+}
+
+.inicio {
+  margin-block-start: 60px;
+  
+}
+
+.inicio-card {
+  margin-block-end: 10px;
+}
+
+.alerta {
+  text-transform: uppercase;
+  color: #007bff;
+}
+
+span strong {
+  color: brown;
+}
+
+/* TABLA */
+table {
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
+table tr th,
+table tr td {
+  padding: 0.5625em 0.625em;
+  font-size: 0.875em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+table th {
+  background-color: #323f4d !important;
+  cursor: pointer;
+}
+
+table tr.even,
+table tr.alt,
+table tr:nth-of-type(even) {
+  background: #130d0d !important;
+}
+
+/* SCROLL */
+.container-scroll {
+  width: 100%;
+  height: 85vh;
+  line-height: 1.3;
+  overflow: auto;
+}
+
+/* Tamaño del scroll */
+.container-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Estilos barra (thumb) de scroll */
+.container-scroll::-webkit-scrollbar-thumb {
+  background: #303030;
+  border-radius: 4px;
+}
+
+.container-scroll::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+/* Scroll Form */
+.scroll-form {
+  width: 100%;
+  height: 90vh;
+  line-height: 1.3;
+  overflow: auto;
+}
+
+/* Tamaño del scroll */
+.scroll-form::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Estilos barra (thumb) de scroll */
+.scroll-form::-webkit-scrollbar-thumb {
+  background: #303030;
+  border-radius: 4px;
+}
+
+.scroll-form::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+.margen {
+  margin-bottom: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .inicio-card {
+    margin-block-start: 10px;
+    margin-block-end: 25px;
+  }
+
+  table.resp,
+  .resp thead,
+  .resp tbody,
+  .resp tr,
+  .resp th,
+  .resp td,
+  .resp caption {
+    display: block;
+  }
+
+  table.resp {
+    border: none
+  }
+
+  .resp thead tr {
+    display: none;
+  }
+
+  .resp tbody tr {
+    margin: 1em 0;
+    border: 1px solid #444;
+  }
+
+  .resp td {
+    border: none;
+    border-bottom: 1px solid #444;
+    position: relative;
+    padding-left: 45%;
+    text-align: left;
+  }
+
+  .resp tr td:last-child {
+    border-bottom: 1px double #444;
+  }
+
+  .resp tr:last-child td:last-child {
+    border: none;
+  }
+
+  .resp td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  /* Scroll */
+  .container-scroll {
+    height: 85vh;
+    line-height: 1;
+  }
+
+  .container-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .scroll-form {
+    height: 90vh;
+    line-height: 1;
+  }
+
+  .scroll-form::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  table tr th,
+  table tr td {
+    white-space: normal;
+  }
+}

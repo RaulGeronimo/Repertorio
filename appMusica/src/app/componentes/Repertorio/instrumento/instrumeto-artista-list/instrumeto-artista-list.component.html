@@ -1,0 +1,37 @@
+<div class="inicio-card input-group flex-nowrap">
+  <a type="button" class="btn btn-primary" routerLink="/repertorio/instrumento_Artista/agregar">Agregar</a>
+  <a type="button" class="btn btn-success" routerLink="/repertorio/artista">Regresar</a>
+
+  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+  <input type="text" class="form-control bg-dark text-white" placeholder="Buscar" aria-label="Username"
+    aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
+</div>
+
+<div class="container-scroll row">
+  <div class="col-md-4" *ngFor="let artista of artistas | filter:search" style="margin-bottom: 1.5rem;">
+    <div class="card text-center">
+      <div class="card-header text-white d-flex justify-content-between align-items-center">
+        {{artista.Artista}}
+
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button class="btn btn-danger" (click)="borrar(artista.Codigo)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+
+          <button class="btn btn-primary" (click)="show = !show">
+            <i class="fa-solid fa-circle-info"></i>
+          </button>
+        </div>
+
+      </div>
+      <img [src]="artista.Foto == '' ? '/assets/noImagen.png' : artista.Foto " alt="Imagen del Artista">
+      <div class="card-body" *ngIf="show">
+        <p style="font-weight: bold;">Instrumento</p>
+        <p>{{artista.Instrumento}}</p>
+        <p style="font-weight: bold;">Grupo</p>
+        <p>{{artista.Grupo}}</p>
+        <a [routerLink]="['/repertorio/instrumento_Artista/actualizar', artista.Codigo]" class="btn btn-info btn-block">Editar</a>
+      </div>
+    </div>
+  </div>
+</div>

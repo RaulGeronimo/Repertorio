@@ -1,0 +1,118 @@
+<div class="scroll-form row">
+  <div class="col-md-6 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="edit ? actualiza() : add()">
+
+          <!-- Nombre -->
+          <div class="card-body">
+            <input type="text" formControlName="Nombre" [(ngModel)]="cancion.Nombre" placeholder="Nombre de la Cancion:"
+              class="form-control" autofocus
+              [class.is-invalid]="form.get('Nombre')?.invalid && form.get('Nombre')?.touched"
+              [class.is-valid]="form.get('Nombre')?.valid">
+
+            <span *ngIf="form.get('Nombre')?.hasError('required') && form.get('Nombre')?.touched">El campo <span
+                class="alerta">NOMBRE</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Duracion -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="Duracion">Duracion</label>
+              <input id="Duracion" type="time" step="2" [(ngModel)]="cancion.Duracion" formControlName="Duracion"
+                class="form-control" [class.is-invalid]="form.get('Duracion')?.invalid && form.get('Duracion')?.touched"
+                [class.is-valid]="form.get('Duracion')?.valid">
+            </div>
+
+            <span *ngIf="form.get('Duracion')?.hasError('required') && form.get('Duracion')?.touched">El campo <span
+                class="alerta">DURACION</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Publicacion -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="Publicacion">Fecha de Publicacion</label>
+              <input id="Publicacion" type="date" [(ngModel)]="cancion.Publicacion" formControlName="Publicacion"
+                class="form-control"
+                [class.is-invalid]="form.get('Publicacion')?.invalid && form.get('Publicacion')?.touched"
+                [class.is-valid]="form.get('Publicacion')?.valid" />
+            </div>
+
+            <span *ngIf="form.get('Publicacion')?.hasError('required') && form.get('Publicacion')?.touched">El campo
+              <span class="alerta">PUBLICACION</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Genero -->
+          <div class="card-body">
+            <textarea formControlName="Genero" [(ngModel)]="cancion.Genero" placeholder="Genero de la Cancion:" rows="2"
+              class="form-control" [class.is-invalid]="form.get('Genero')?.invalid && form.get('Genero')?.touched"
+              [class.is-valid]="form.get('Genero')?.valid"></textarea>
+
+            <span *ngIf="form.get('Genero')?.hasError('required') && form.get('Genero')?.touched">El campo <span
+                class="alerta">GENERO</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Interpretacion -->
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-group-text" for="Interpretacion">Interpretacion</label>
+              <select formControlName="Interpretacion" [(ngModel)]="cancion.Interpretacion" class="form-control"
+                id="Interpretacion"
+                [class.is-invalid]="form.get('Interpretacion')?.invalid && form.get('Interpretacion')?.touched"
+                [class.is-valid]="form.get('Interpretacion')?.valid">
+                <option selected disabled value="">Selecciona la Interpretacion</option>
+                <option value="Cover">Cover</option>
+                <option value="Demo">Demo</option>
+                <option value="Original">Original</option>
+                <option value="Outtake">Outtake</option>
+                <option value="Versión">Versión</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('Interpretacion')?.hasError('required') && form.get('Interpretacion')?.touched">El
+              campo <span class="alerta">INTERPRETACION</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <!-- Grupo -->
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <input style="size: 10px;" type="text" formControlName="Grupo" [(ngModel)]="search" placeholder="Grupo:"
+                class="form-control" [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
+                [class.is-valid]="form.get('idGrupo')?.valid">
+              <select formControlName="idGrupo" [(ngModel)]="cancion.idGrupo" class="form-control form-select"
+                id="inputGroupSelect02"
+                [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
+                [class.is-valid]="form.get('idGrupo')?.valid">
+                <option selected disabled value="">Selecciona un Grupo</option>
+                <option *ngFor="let grupo of Grupo | filter:search" value="{{grupo.idGrupo}}">{{grupo.Nombre}}</option>
+              </select>
+            </div>
+
+            <span *ngIf="form.get('idGrupo')?.hasError('required') && form.get('idGrupo')?.touched">El campo <span
+                class="alerta">GRUPO</span> es <strong>Requerido</strong></span>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+            <button routerLink="/repertorio/canciones" type="button" class="btn btn-primary">Regresar</button>
+          </div>
+          <!-- <button type="button" class="btn btn-success" (click)="edit ? actualiza() : add()">Aceptar</button>
+          <a href="/canciones" type="button" class="btn btn-primary">Regresar</a> -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 inicio-card">
+    <div class="card card-body text-center">
+      <h3 style="text-transform: uppercase;">
+        {{cancion.idCancion}} - {{cancion.Nombre == '' ? 'Nombre de la Canción' : cancion.Nombre}}
+      </h3>
+      <p>{{cancion.Duracion == '' ? 'Duración' : cancion.Duracion?.substring(3)}}</p>
+      <p>{{cancion.Publicacion == ''? 'Publicación' : (cancion.Publicacion | date: 'dd / MMMM / yyyy')}}</p>
+      <p>{{cancion.Genero == '' ? 'Género' : cancion.Genero}}</p>
+      <p>{{cancion.Interpretacion == '' ? 'Interpretación' : cancion.Interpretacion}}</p>
+      <p>{{cancion.idGrupo == '' ? 'Grupo' : cancion.idGrupo}}</p>
+    </div>
+  </div>
+</div>

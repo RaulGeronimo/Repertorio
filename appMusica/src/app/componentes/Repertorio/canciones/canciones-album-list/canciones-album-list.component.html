@@ -1,0 +1,57 @@
+<div class="inicio-card input-group flex-nowrap">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+    aria-expanded="false">Agregar</button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" routerLink="/repertorio/canciones/agregar">Canción</a></li>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+    <li><a class="dropdown-item" routerLink="/repertorio/album/agregar">Álbum</a></li>
+    <li><a class="dropdown-item" routerLink="/repertorio/canciones_Album/agregar">Canción</a></li>
+  </ul>
+
+  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+  <input type="text" class="form-control bg-dark text-white" placeholder="Buscar" aria-label="Username"
+    aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
+</div>
+
+<label>Total: {{total}} registros</label>
+
+<div class="container-scroll">
+  <div class="table-responsive">
+    <table class="table table-hover table-dark resp" id="myTable">
+      <thead>
+        <tr>
+          <th (click)="setOrder('Codigo')" scope="col">#</th>
+          <th (click)="setOrder('Nombre')" scope="col">Nombre</th>
+          <th (click)="setOrder('Album')" scope="col">Álbum</th>
+          <th (click)="setOrder('Duracion')" scope="col">Duración</th>
+          <th (click)="setOrder('Genero')" scope="col">Genero</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let canciones of Canciones | orderBy: order:reverse:caseInsensitive | filter:search; index as i">
+          <!-- <td>{{i+1}}</td> -->
+          <td>{{canciones.Codigo}}</td>
+          <td>{{canciones.Nombre}}</td>
+          <td>{{canciones.Album}}</td>
+          <td>{{canciones.Duracion}}</td>
+          <td>{{canciones.Genero}}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <button [routerLink]="['/repertorio/canciones_Album/actualizar', canciones.Codigo]"
+                class="btn btn-info btn-block">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+
+              <button class="btn btn-danger" (click)="borrar(canciones.Codigo)">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

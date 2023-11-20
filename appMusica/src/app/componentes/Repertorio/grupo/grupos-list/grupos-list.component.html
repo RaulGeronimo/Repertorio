@@ -1,0 +1,159 @@
+<div class="inicio-card input-group flex-nowrap">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+    aria-expanded="false">Agregar</button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" routerLink="/repertorio/grupo/agregar">Grupo</a></li>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+    <li><a class="dropdown-item" routerLink="/repertorio/artista_Grupo/agregar">Integrante</a></li>
+  </ul>
+
+  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+  <input type="text" class="form-control bg-dark text-white" placeholder="Buscar" aria-label="Username"
+    aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
+  <a type="button" class="btn btn-outline-light" (click)="tabla=!tabla">Otra Vista</a>
+</div>
+
+<label>Total: {{total}} registros</label>
+
+<div class="container-scroll row" *ngIf="tabla; else lista">
+  <div class="col-md-4" *ngFor="let grupos of Grupos | filter:search" style="margin-bottom: 1.5rem;">
+    <div class="card text-center">
+      <div class="card-header text-white d-flex justify-content-between align-items-center">
+        {{grupos.Nombre}}
+
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button class="btn btn-danger" (click)="borrar(grupos.idGrupo)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+
+          <button class="btn btn-primary" (click)="show = !show">
+            <i class="fa-solid fa-circle-info"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box">
+        <img [src]="grupos.Logo == '' ? '/assets/noImagen.png' : grupos.Logo " alt="Imagen del Grupo">
+      </div>
+      <div class="card-body" *ngIf="show">
+        <p style="font-weight: bold;">Albumes</p>
+        <p>{{grupos.Albumes}}</p>
+        <p style="font-weight: bold;">Canciones</p>
+        <p>{{grupos.Cancion}}</p>
+        <p style="font-weight: bold;">Origen</p>
+        <p>{{grupos.Origen}}</p>
+        <p style="font-weight: bold;">Genero</p>
+        <p>{{grupos.Genero}}</p>
+        <p style="font-weight: bold;">Inicio</p>
+        <p>{{grupos.FechaInicio}}</p>
+        <p style="font-weight: bold;">Estado</p>
+        <p>{{grupos.Estado}}</p>
+        <p style="font-weight: bold;">Sitio Web</p>
+        <p><a href="{{grupos.SitioWeb}}" target="_blank">{{grupos.SitioWeb}}</a></p>
+
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <a [routerLink]="['/repertorio/grupo/actualizar', grupos.idGrupo]" class="btn btn-info btn-block"><i
+              class="fa-solid fa-pen-to-square"></i>
+          </a>
+
+          <a [routerLink]="['/repertorio/buscaCancion_Grupo', grupos.idGrupo]" class="btn btn-success btn-block">
+            <i class="fa-solid fa-music"></i>
+          </a>
+
+          <a [routerLink]="['/repertorio/buscaAlbum_Grupo', grupos.idGrupo]" class="btn btn-warning btn-block">
+            <i class="fa-sharp fa-solid fa-compact-disc"></i>
+          </a>
+
+          <a [routerLink]="['/repertorio/buscaIntegrante_Grupo', grupos.idGrupo]" class="btn btn-danger btn-block">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <a [routerLink]="['/repertorio/grupo/actualizar', grupos.idGrupo]" class="btn btn-info btn-block"><i
+            class="fa-solid fa-pen-to-square"></i>
+        </a>
+
+        <a [routerLink]="['/repertorio/buscaCancion_Grupo', grupos.idGrupo]" class="btn btn-success btn-block" target="_blank">
+          <i class="fa-solid fa-music"></i>
+        </a>
+
+        <a [routerLink]="['/repertorio/buscaAlbum_Grupo', grupos.idGrupo]" class="btn btn-warning btn-block" target="_blank">
+          <i class="fa-sharp fa-solid fa-compact-disc"></i>
+        </a>
+
+        <a [routerLink]="['/repertorio/buscaIntegrante_Grupo', grupos.idGrupo]" class="btn btn-danger btn-block" target="_blank">
+          <i class="fa-solid fa-user"></i>
+        </a>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+
+<!-- Tabla -->
+<ng-template #lista>
+  <div class="container-scroll">
+    <div class="table-responsive">
+      <table id="myTable" class="table table-hover table-dark resp">
+        <thead>
+          <tr>
+            <th (click)="setOrder('idGrupo')" scope="col">#</th>
+            <th (click)="setOrder('Nombre')" scope="col">Nombre</th>
+            <th (click)="setOrder('Albumes')" scope="col">Álbumes</th>
+            <th (click)="setOrder('Cancion')" scope="col">No. Canciones</th>
+            <th (click)="setOrder('Origen')" scope="col">Origen</th>
+            <th (click)="setOrder('FechaInicio')" scope="col">Inicio</th>
+            <th (click)="setOrder('Sellos')" scope="col">Sellos</th>
+            <th (click)="setOrder('Estado')" scope="col">Estado</th>
+            <th (click)="setOrder('Idioma')" scope="col">Idioma</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let grupos of Grupos | orderBy: order:reverse:caseInsensitive | filter:search; index as i">
+            <!-- <td>{{i+1}}</td> -->
+            <td>{{grupos.idGrupo}}</td>
+            <td>{{grupos.Nombre}}</td>
+            <td>{{grupos.Albumes}}</td>
+            <td>{{grupos.Cancion}}</td>
+            <td>{{grupos.Origen}}</td>
+            <td>{{grupos.FechaInicio}}</td>
+            <td>{{grupos.Sellos}}</td>
+            <td>{{grupos.Estado}}</td>
+            <td>{{grupos.Idioma}}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a [routerLink]="['/repertorio/grupo/actualizar', grupos.idGrupo]" class="btn btn-info btn-block"><i
+                    class="fa-solid fa-pen-to-square"></i>
+                </a>
+
+                <button class="btn btn-danger" (click)="borrar(grupos.idGrupo)">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+
+                <a [routerLink]="['/repertorio/buscaCancion_Grupo', grupos.idGrupo]" class="btn btn-success btn-block">
+                  <i class="fa-solid fa-music"></i>
+                </a>
+
+                <a [routerLink]="['/repertorio/buscaAlbum_Grupo', grupos.idGrupo]" class="btn btn-warning btn-block">
+                  <i class="fa-sharp fa-solid fa-compact-disc"></i>
+                </a>
+
+                <a [routerLink]="['/repertorio/buscaIntegrante_Grupo', grupos.idGrupo]"
+                  class="btn btn-danger btn-block">
+                  <i class="fa-solid fa-user"></i>
+                </a>
+
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>

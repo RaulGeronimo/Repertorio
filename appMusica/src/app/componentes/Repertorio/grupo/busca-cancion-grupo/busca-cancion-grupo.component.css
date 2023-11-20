@@ -1,0 +1,31 @@
+@media only screen and (max-width: 768px) {
+  td:nth-of-type(1):before {
+    content: "Número";
+  }
+
+  td:nth-of-type(2):before {
+    content: "Nombre";
+  }
+
+  td:nth-of-type(3):before {
+    content: "Álbums";
+  }
+
+  td:nth-of-type(4):before {
+    content: "Duración";
+  }
+
+  td:nth-of-type(5):before {
+    content: "Publicación";
+  }
+
+  td:nth-of-type(6):before {
+    content: "Acciones";
+  }
+}
+
+.grupo {
+  width: 100%;
+  object-fit: cover;
+  max-height: 540px;
+}
