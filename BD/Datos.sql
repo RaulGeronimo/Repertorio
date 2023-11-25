@@ -1241,4 +1241,7 @@ INSERT INTO `Auditorias` VALUES
 
 
 INSERT INTO `Usuario` VALUES
-(1,'Raúl Gabriel','Gerónimo','Herrera','Raul','raul090700@gmail.com','c90d6d172779ddee6dae9af3aa21d7bc',1);
+(1,'Raúl Gabriel','Gerónimo','Herrera','Raul','raul090700@gmail.com',MD5('1829301'),1),
+(2,'Jonathan ','Eslava','Caza','Jona','jadrian1112@gmail.com',MD5('12345'),0),
+(3,'Osvaldo ','Torre','Sánchez ','osvaldo123','osvaldoyts20@gmail.com',MD5('osvaldo12'),0),
+(4,'Sofia','Ramos ','Páez ','sofia05','sofibet45@gmail.com',MD5('123456'),0);

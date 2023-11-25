@@ -96,6 +96,13 @@
             </li>
           </div>
 
+          <!-- Usuarios -->
+          <div *ngIf="rol == 1">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['users']">Usuarios</a>
+            </li>
+          </div>
+
           <!-- Cerrar Sesion -->
           <hr class="hr hr-blurry" />
           <li class="nav-item">

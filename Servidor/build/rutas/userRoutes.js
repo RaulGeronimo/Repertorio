@@ -12,8 +12,10 @@ class UserRoutes {
     }
     config() {
         this.router.post('/', userController_1.default.add);
-        this.router.get('/:Usuario/:Password', userController_1.default.login);
-        this.router.get('/:Correo', userController_1.default.validar);
+        this.router.get('/', userController_1.default.lista);
+        this.router.get('/login/:Usuario/:Password', userController_1.default.login);
+        this.router.get('/email/:Correo', userController_1.default.validar);
+        this.router.get('/username/:Usuario', userController_1.default.validarUsuario);
     }
 }
 const userRoutes = new UserRoutes();

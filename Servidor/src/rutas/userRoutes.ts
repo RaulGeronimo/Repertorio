@@ -10,8 +10,10 @@ class UserRoutes{
 
     config(): void{
         this.router.post('/', userController.add);
-        this.router.get('/:Usuario/:Password', userController.login);
-        this.router.get('/:Correo', userController.validar);
+        this.router.get('/', userController.lista);
+        this.router.get('/login/:Usuario/:Password', userController.login);
+        this.router.get('/email/:Correo', userController.validar);
+        this.router.get('/username/:Usuario', userController.validarUsuario);
     }
 }
 

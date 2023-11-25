@@ -6,6 +6,7 @@ import { User } from 'src/app/modelos/User';
 import { UserService } from 'src/app/servicios/user.service';
 /* ALERTAS */
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -49,9 +50,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.userService
-      .login(this.user.Usuario!, this.user.Password!)
-      .subscribe((res: any) => {
+    this.userService.login(this.user.Usuario!, this.user.Password!).subscribe(
+      (res: any) => {
         if (res != null) {
           this.router.navigate(['repertorio/grupo']);
           this.user = res;
@@ -66,15 +66,36 @@ export class LoginComponent implements OnInit {
           );
         } else {
           this.router.navigate(['login']);
-          this.toastr.warning(
+          /* this.toastr.warning(
             'No se encontro al usuario',
             'Usuario no encontrado'
-          );
+          ); */
+
+          Swal.fire({
+            title: 'No se encontro al usuario',
+            text: 'Usuario no encontrado',
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+          });
         }
-      });
+      },
+      (err) => {
+        console.error(err);
+        this.error();
+      }
+    );
   }
 
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
+  }
+
+  error() {
+    Swal.fire({
+      title: 'Error de Servidor',
+      text: 'Espere un momento',
+      icon: 'question',
+    });
   }
 }

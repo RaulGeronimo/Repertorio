@@ -433,9 +433,10 @@ CREATE TABLE Usuario(
     Nombre VARCHAR(60),
     ApellidoPaterno VARCHAR(60),
     ApellidoMaterno VARCHAR(60),
-    Usuario VARCHAR(60),
-    Correo VARCHAR(100),
+    Usuario VARCHAR(60) UNIQUE,
+    Correo VARCHAR(100) UNIQUE,
     Password TEXT,
+    Registro DATETIME,
     Rol INT
 );
 
@@ -444,7 +445,7 @@ DROP PROCEDURE IF EXISTS `crear_usuario`;
 DELIMITER $$
 CREATE PROCEDURE `crear_usuario`(IN Nombre VARCHAR(60), IN ApellidoPaterno VARCHAR(60), IN ApellidoMaterno VARCHAR(60), IN Usuario VARCHAR(60), IN Correo VARCHAR(100), IN Password TEXT)
 BEGIN
-	INSERT INTO Usuario VALUES (NULL, Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Correo, MD5(Password), 0);
+	INSERT INTO Usuario VALUES (NULL, Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Correo, MD5(Password), NOW(), 0);
 END$$
 
 DELIMITER ;

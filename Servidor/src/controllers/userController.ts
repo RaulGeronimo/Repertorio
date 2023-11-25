@@ -15,6 +15,11 @@ class UserController{
         res.json({message: 'Se guardo un Usuario'});
     }
 
+    public async lista(req: Request, res: Response){
+        const usuario = await pool.query('SELECT * FROM Usuario ORDER BY Registro');
+        res.json(usuario);
+    }
+
     public async login(req: Request, res: Response){
         const Usuario =  req.params.Usuario;
         const Password =  req.params.Password;
@@ -27,6 +32,12 @@ class UserController{
     public async validar(req: Request, res: Response){
         const Correo =  req.params.Correo;
         const user = await pool.query('SELECT * FROM Usuario WHERE Correo = ?', [Correo]);
+        res.json(user);
+    }
+
+    public async validarUsuario(req: Request, res: Response){
+        const Usuario =  req.params.Usuario;
+        const user = await pool.query('SELECT * FROM Usuario WHERE Usuario = ?', [Usuario]);
         res.json(user);
     }
 }

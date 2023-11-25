@@ -28,6 +28,12 @@ class UserController {
             res.json({ message: 'Se guardo un Usuario' });
         });
     }
+    lista(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const usuario = yield database_1.default.query('SELECT * FROM Usuario ORDER BY Registro');
+            res.json(usuario);
+        });
+    }
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const Usuario = req.params.Usuario;
@@ -42,6 +48,13 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const Correo = req.params.Correo;
             const user = yield database_1.default.query('SELECT * FROM Usuario WHERE Correo = ?', [Correo]);
+            res.json(user);
+        });
+    }
+    validarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const Usuario = req.params.Usuario;
+            const user = yield database_1.default.query('SELECT * FROM Usuario WHERE Usuario = ?', [Usuario]);
             res.json(user);
         });
     }

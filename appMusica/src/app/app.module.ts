@@ -79,6 +79,7 @@ import { AuditoriaComponent } from './componentes/Repertorio/auditoria/auditoria
 import { AuditoriaService } from './servicios/auditoria.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { OrderModule } from 'ngx-order-pipe';
+import { UsuariosComponent } from './componentes/Repertorio/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { OrderModule } from 'ngx-order-pipe';
     RegisterComponent,
     PrincipalComponent,
     AuditoriaComponent,
+    UsuariosComponent,
   ],
   imports: [
     BrowserModule,

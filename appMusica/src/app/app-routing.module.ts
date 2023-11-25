@@ -36,6 +36,7 @@ import { LoginComponent } from './componentes/usuario/login/login.component';
 import { RegisterComponent } from './componentes/usuario/register/register.component';
 import { PrincipalComponent } from './componentes/Repertorio/principal/principal.component';
 import { AuditoriaComponent } from './componentes/Repertorio/auditoria/auditoria.component';
+import { UsuariosComponent } from './componentes/Repertorio/usuarios/usuarios.component';
 
 const routes: Routes = [
   //Creacion de los Objetos
@@ -199,6 +200,11 @@ const routes: Routes = [
       {
         path: 'pais/actualizar/:idPais',
         component: PaisFormComponent,
+      },
+      /* Usuarios */
+      {
+        path: 'users', //Se creo la ruta para abrir un componente
+        component: UsuariosComponent,
       },
 
       /* ---------------------------------------------------------- BUSQUEDA ---------------------------------------------------------- */
