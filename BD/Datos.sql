@@ -1241,7 +1241,8 @@ INSERT INTO `Auditorias` VALUES
 
 
 INSERT INTO `Usuario` VALUES
-(1,'Raúl Gabriel','Gerónimo','Herrera','Raul','raul090700@gmail.com',MD5('1829301'),1),
-(2,'Jonathan ','Eslava','Caza','Jona','jadrian1112@gmail.com',MD5('12345'),0),
-(3,'Osvaldo ','Torre','Sánchez ','osvaldo123','osvaldoyts20@gmail.com',MD5('osvaldo12'),0),
-(4,'Sofia','Ramos ','Páez ','sofia05','sofibet45@gmail.com',MD5('123456'),0);
+(1,'Raúl Gabriel','Gerónimo','Herrera','Raul','raul090700@gmail.com','c90d6d172779ddee6dae9af3aa21d7bc','2023-11-25 10:11:32',1),
+(2,'Sofia','Ramos','Páez ','Sofibet','sofibet45@gmail.com','e10adc3949ba59abbe56e057f20f883e','2023-11-25 17:11:07',0),
+(3,'Osvaldo ','Torres ','Sánchez ','osvaldo123','osvaldoyts220@gmail.com','2b95659c72eeffc4fcbb084a6a34a70b','2023-11-25 20:06:21',0),
+(4,'Zai','Mia','U','ZJ','bzai5204@gmail.com','33ea63cd09c8f7b2bec2403c2f9f37c1','2023-11-25 20:27:05',0),
+(5,'Jonathan ','Eslava','Caza','jonathan ','jadrian1112@gmail.com','543a28083cb237e9372948c8f77cbfc5','2023-11-25 21:11:03',0);

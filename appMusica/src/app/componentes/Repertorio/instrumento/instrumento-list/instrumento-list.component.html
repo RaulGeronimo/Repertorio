@@ -6,6 +6,8 @@
     aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
 </div>
 
+<label>Total: {{total}} registros</label>
+
 <div class="container-scroll row">
   <div class="col-md-4" *ngFor="let instrumento of instrumentos | filter:search" style="margin-bottom: 1.5rem;">
     <div class="card text-center">

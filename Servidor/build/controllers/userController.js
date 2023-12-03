@@ -36,11 +36,11 @@ class UserController {
     }
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Usuario = req.params.Usuario;
-            const Password = req.params.Password;
-            const user = yield database_1.default.query('SELECT * FROM Usuario WHERE (Usuario = ? AND Password = MD5(?)) OR (Correo = ? AND Password = MD5(?))', [Usuario, Password, Usuario, Password]);
-            const email = yield database_1.default.query('SELECT @Correo :=  Correo FROM Usuario WHERE (Usuario = ? AND Password = MD5(?)) OR (Correo = ? AND Password = MD5(?))', [Usuario, Password, Usuario, Password]);
-            console.log(email);
+            const values = [
+                req.params.Usuario,
+                req.params.Password
+            ];
+            const user = yield database_1.default.query('CALL buscar_usuario (?)', [values]);
             res.json(user[0]);
         });
     }

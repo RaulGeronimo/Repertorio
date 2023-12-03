@@ -20,7 +20,6 @@ export class BuscaCancionGrupoComponent implements OnInit {
   //Creamos el arreglo vacio llamado Canciones
   Canciones: any = [];
   Grupo: any = [];
-  total: number = 0;
 
   //Busqueda
   search: any;
@@ -59,7 +58,6 @@ export class BuscaCancionGrupoComponent implements OnInit {
         (res) => {
           console.log(res); //Muestra en consola
           this.Canciones = res; //Muestra en el navegador
-          this.total = this.Canciones.length;
         },
         (err) => console.error(err)
       );

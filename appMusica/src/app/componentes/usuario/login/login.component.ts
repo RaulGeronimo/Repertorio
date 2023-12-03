@@ -43,19 +43,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem('Usuario');
     localStorage.removeItem('User');
-
-    /* if (localStorage.getItem('Usuario') != null) {
-      this.router.navigate(['repertorio/grupo']);
-    } */
   }
 
   login() {
     this.userService.login(this.user.Usuario!, this.user.Password!).subscribe(
       (res: any) => {
-        if (res != null) {
+        if (res[0] != null) {
           this.router.navigate(['repertorio/grupo']);
-          this.user = res;
-          console.log(res);
+          this.user = res[0];
+          console.log(res[0]);
 
           localStorage.setItem('Rol', this.user.Rol.toString());
 

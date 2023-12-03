@@ -17,6 +17,7 @@ import { ArtistaGrupoService } from 'src/app/servicios/artista-grupo.service';
 export class BuscaIntegrantesGrupoComponent implements OnInit {
   //Creamos el arreglo vacio llamado Canciones
   artistas: any = [];
+  total: number = 0;
   Grupo: any = [];
   search: any;
   show: boolean = false;
@@ -28,7 +29,7 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
     private GrupoService: BuscaGrupoService,
     private toastr: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -46,6 +47,7 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
         (res) => {
           console.log(res); //Muestra en consola
           this.artistas = res; //Muestra en el navegador
+          this.total = this.artistas.length;
         },
         (err) => console.error(err)
       );

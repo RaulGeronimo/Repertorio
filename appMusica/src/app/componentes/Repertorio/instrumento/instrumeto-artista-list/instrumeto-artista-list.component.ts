@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class InstrumetoArtistaListComponent implements OnInit {
   //Creamos el arreglo vacio llamado artistas
   artistas: any = [];
+  total: number = 0;
   search: any;
   show: boolean = false;
 
@@ -20,7 +21,7 @@ export class InstrumetoArtistaListComponent implements OnInit {
     private Service: InstrumentoArtistaService,
     private toastr: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -36,6 +37,7 @@ export class InstrumetoArtistaListComponent implements OnInit {
         console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.artistas = res;
+        this.total = this.artistas.length;
       },
       (err) => console.error(err)
     );

@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 //Importamos la interfaz
 import { User } from '../modelos/User';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import * as crypto from 'crypto-js';
 
 @Injectable({
   providedIn: 'root',

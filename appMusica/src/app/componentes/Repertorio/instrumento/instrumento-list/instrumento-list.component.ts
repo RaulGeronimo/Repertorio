@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class InstrumentoListComponent implements OnInit {
   //Creamos el arreglo vacio llamado paises
   instrumentos: any = [];
+  total: number = 0;
   search: any;
   show: boolean = false;
 
@@ -21,7 +22,7 @@ export class InstrumentoListComponent implements OnInit {
     private instrumentosService: InstrumentosService,
     private toastr: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -41,6 +42,7 @@ export class InstrumentoListComponent implements OnInit {
         console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.instrumentos = res;
+        this.total = this.instrumentos.length;
       },
       (err) => console.error(err)
     );

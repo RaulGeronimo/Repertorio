@@ -7,6 +7,8 @@
     aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
 </div>
 
+<label>Total: {{total}} registros</label>
+
 <div class="container-scroll row">
   <div class="col-md-4" *ngFor="let artista of artistas | filter:search" style="margin-bottom: 1.5rem;">
     <div class="card text-center">
@@ -30,7 +32,8 @@
         <p>{{artista.Instrumento}}</p>
         <p style="font-weight: bold;">Grupo</p>
         <p>{{artista.Grupo}}</p>
-        <a [routerLink]="['/repertorio/instrumento_Artista/actualizar', artista.Codigo]" class="btn btn-info btn-block">Editar</a>
+        <a [routerLink]="['/repertorio/instrumento_Artista/actualizar', artista.Codigo]"
+          class="btn btn-info btn-block">Editar</a>
       </div>
     </div>
   </div>

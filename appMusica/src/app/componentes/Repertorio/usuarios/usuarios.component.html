@@ -1,1 +1,40 @@
-<p>usuarios works!</p>
+<div class="inicio-card input-group flex-nowrap">
+    <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+    <input type="text" class="form-control bg-dark text-white" placeholder="Buscar" aria-label="Username"
+        aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
+</div>
+
+<label>Total: {{total}} registros</label>
+
+<div class="container-scroll">
+    <div class="table-responsive">
+        <table class="table table-hover table-dark resp" id="myTable">
+            <thead>
+                <tr>
+                    <th (click)="setOrder('IdUsuario')" scope="col">#</th>
+                    <th (click)="setOrder('Nombre')" scope="col">Nombre</th>
+                    <th (click)="setOrder('ApellidoPaterno')" scope="col">Apellido Paterno</th>
+                    <th (click)="setOrder('ApellidoMaterno')" scope="col">Apellido Materno</th>
+                    <th (click)="setOrder('Usuario')" scope="col">Usuario</th>
+                    <th (click)="setOrder('Correo')" scope="col">Correo</th>
+                    <th (click)="setOrder('Registro')" scope="col">Registro</th>
+                    <th (click)="setOrder('Rol')" scope="col">Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let usuario of Usuarios | orderBy: order:reverse:caseInsensitive | filter:search; index as i">
+                    <!-- <td>{{i+1}}</td> -->
+                    <td>{{usuario.IdUsuario}}</td>
+                    <td>{{usuario.Nombre}}</td>
+                    <td>{{usuario.ApellidoPaterno}}</td>
+                    <td>{{usuario.ApellidoMaterno}}</td>
+                    <td>{{usuario.Usuario}}</td>
+                    <td>{{usuario.Correo}}</td>
+                    <td>{{usuario.Registro | date: 'dd / MMMM / yyyy h:mm:ss a'}}</td>
+                    <td>{{usuario.Rol}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

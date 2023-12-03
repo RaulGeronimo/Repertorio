@@ -16,12 +16,13 @@ export class ArtistaGrupoListComponent implements OnInit {
   artistas: any = [];
   search: any;
   show: boolean = false;
+  total: number = 0;
 
   constructor(
     private Service: ArtistaGrupoService,
     private toastr: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -37,6 +38,7 @@ export class ArtistaGrupoListComponent implements OnInit {
         console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.artistas = res;
+        this.total = this.artistas.length;
       },
       (err) => console.error(err)
     );

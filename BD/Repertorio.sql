@@ -301,9 +301,9 @@ Mayuscula(A.Grabacion) AS Grabacion,
 Mayuscula(A.Genero) AS Genero,
 A.Portada
 FROM Album as A
-    INNER JOIN Grupo as G ON a.idGrupo = G.idGrupo
-    INNER JOIN Disquera AS D ON a.idDisquera = D.idDisquera
-    LEFT JOIN Canciones_Album ON a.idAlbum = Canciones_Album.idAlbum
+    INNER JOIN Grupo as G ON A.idGrupo = G.idGrupo
+    INNER JOIN Disquera AS D ON A.idDisquera = D.idDisquera
+    LEFT JOIN Canciones_Album ON A.idAlbum = Canciones_Album.idAlbum
 GROUP BY(A.idAlbum)
 ORDER BY (A.Nombre);
 
@@ -446,6 +446,16 @@ DELIMITER $$
 CREATE PROCEDURE `crear_usuario`(IN Nombre VARCHAR(60), IN ApellidoPaterno VARCHAR(60), IN ApellidoMaterno VARCHAR(60), IN Usuario VARCHAR(60), IN Correo VARCHAR(100), IN Password TEXT)
 BEGIN
 	INSERT INTO Usuario VALUES (NULL, Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Correo, MD5(Password), NOW(), 0);
+END$$
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `buscar_usuario`;
+DELIMITER $$
+CREATE PROCEDURE `buscar_usuario`(IN UsuarioB VARCHAR(60), IN PasswordB VARCHAR(60))
+BEGIN
+	SELECT * FROM Usuario WHERE (Usuario = UsuarioB AND Password = MD5(PasswordB)) OR (Correo = UsuarioB AND Password = MD5(PasswordB));
+    SET @Correo := (SELECT Correo FROM Usuario WHERE (Usuario = UsuarioB AND Password = MD5(PasswordB)) OR (Correo = UsuarioB AND Password = MD5(PasswordB)));
 END$$
 
 DELIMITER ;
