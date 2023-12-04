@@ -67,7 +67,7 @@ export class InstrumentoFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['instrumento']);
+        this.router.navigate(['repertorio/instrumento']);
         this.toastr.success(
           `El instrumento '${this.instrumentos.Nombre}' fue agregado con éxito`,
           'Instrumento Agregado'
@@ -84,7 +84,7 @@ export class InstrumentoFormComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          this.router.navigate(['/instrumento']);
+          this.router.navigate(['repertorio/instrumento']);
           this.toastr.info(
             `El instrumento '${this.instrumentos.Nombre}' fue actualizado con éxito`,
             'Instrumento Actualizado'

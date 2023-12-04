@@ -71,7 +71,7 @@ export class DisqueraFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['disquera']);
+        this.router.navigate(['repertorio/disquera']);
         this.toastr.success(
           `La disquera '${this.disquera.Nombre}' fue agregada con éxito`,
           'Disquera Agregada'
@@ -86,7 +86,7 @@ export class DisqueraFormComponent implements OnInit {
     this.Service.update(params['idDisquera'], this.disquera).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/disquera']);
+        this.router.navigate(['repertorio/disquera']);
         this.toastr.info(
           `La disquera '${this.disquera.Nombre}' fue actualizada con éxito`,
           'Disquera Actualizada'

@@ -67,7 +67,7 @@ export class PaisFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['pais']);
+        this.router.navigate(['repertorio/pais']);
         this.toastr.success(
           `El pais '${this.pais.Nombre}' fue agregado con éxito`,
           'Pais Agregado'
@@ -82,7 +82,7 @@ export class PaisFormComponent implements OnInit {
     this.paisService.updatePais(params['idPais'], this.pais).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/pais']);
+        this.router.navigate(['repertorio/pais']);
         this.toastr.info(
           `El pais '${this.pais.Nombre}' fue actualizado con éxito`,
           'Pais Actualizado'

@@ -85,7 +85,7 @@ export class ArtistaGrupoFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['artista_Grupo']);
+        this.router.navigate(['repertorio/artista_Grupo']);
         this.toastr.success(
           'El artista fue agregado al grupo con éxito',
           'Artista Agregado'
@@ -100,7 +100,7 @@ export class ArtistaGrupoFormComponent implements OnInit {
     this.Service.update(params['Codigo'], this.artista_Grupo).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/artista_Grupo']);
+        this.router.navigate(['repertorio/artista_Grupo']);
         this.toastr.info(
           'El artista fue actualizado con éxito',
           'Artista Actualizado'

@@ -75,7 +75,7 @@ export class GruposFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['grupo']);
+        this.router.navigate(['repertorio/grupo']);
         this.toastr.success(
           `El grupo '${this.grupo.Nombre}' fue agregado con éxito`,
           'Grupo Agregado'
@@ -90,7 +90,7 @@ export class GruposFormComponent implements OnInit {
     this.Service.update(params['idGrupo'], this.grupo).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/grupo']);
+        this.router.navigate(['repertorio/grupo']);
         this.toastr.info(
           `El grupo '${this.grupo.Nombre}' fue actualizado con éxito`,
           'Grupo Actualizado'

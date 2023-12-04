@@ -76,7 +76,7 @@ export class InstrumetoArtistaFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['instrumento_Artista']);
+        this.router.navigate(['repertorio/instrumento_Artista']);
         this.toastr.success(
           'El instrumento fue agregado al artista con éxito',
           'Instrumento Agregado'
@@ -91,7 +91,7 @@ export class InstrumetoArtistaFormComponent implements OnInit {
     this.Service.update(params['Codigo'], this.instrumento_Artista).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/instrumento_Artista']);
+        this.router.navigate(['repertorio/instrumento_Artista']);
         this.toastr.info(
           'El instrumento fue actualizado con éxito',
           'Instrumento Actualizado'

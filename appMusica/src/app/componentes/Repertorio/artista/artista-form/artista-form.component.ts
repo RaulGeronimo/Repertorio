@@ -79,7 +79,7 @@ export class ArtistaFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['artista']);
+        this.router.navigate(['repertorio/artista']);
         this.toastr.success(
           `El artista '${this.artista.NombreArtistico}' fue agregado con éxito`,
           'Artista Agregado'
@@ -94,7 +94,7 @@ export class ArtistaFormComponent implements OnInit {
     this.Service.update(params['idArtista'], this.artista).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/artista']);
+        this.router.navigate(['repertorio/artista']);
         this.toastr.info(
           `El artista '${this.artista.NombreArtistico}' fue actualizado con éxito`,
           'Artista Actualizado'

@@ -74,7 +74,7 @@ export class CancionesFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['canciones']);
+        this.router.navigate(['repertorio/canciones']);
         this.toastr.success(
           `La canción '${this.cancion.Nombre}' fue agregada con éxito`,
           'Canción Agregada'
@@ -89,7 +89,7 @@ export class CancionesFormComponent implements OnInit {
     this.Service.update(params['idCancion'], this.cancion).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/canciones']);
+        this.router.navigate(['repertorio/canciones']);
         this.toastr.info(
           `La canción '${this.cancion.Nombre}' fue actualizada con éxito`,
           'Canción Actualizada'

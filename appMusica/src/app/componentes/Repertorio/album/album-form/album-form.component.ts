@@ -85,7 +85,7 @@ export class AlbumFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['album']);
+        this.router.navigate(['repertorio/album']);
         this.toastr.success(
           `El álbum '${this.album.Nombre}' fue agregado con éxito`,
           'Álbum Agregado'
@@ -100,7 +100,7 @@ export class AlbumFormComponent implements OnInit {
     this.Service.update(params['idAlbum'], this.album).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/album']);
+        this.router.navigate(['repertorio/album']);
         this.toastr.info(
           `El álbum '${this.album.Nombre}' fue actualizado con éxito`,
           'Álbum Actualizado'
