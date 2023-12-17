@@ -18,6 +18,12 @@ label {
   margin: 10px;
 }
 
+form label {
+  display: block;
+  text-align: left;
+  margin: 0px;
+}
+
 form input::placeholder,
 form textarea::placeholder {
   color: #000000 !important;

@@ -609,7 +609,9 @@ INSERT INTO `Canciones` VALUES
 (376,'Points of Authority','00:03:21','2004-10-24','Nü metal','Original',4),
 (377,'The Messenger','00:03:02','2010-05-12','Rock acústico, folk rock, balada','Original',4),
 (378,'Keys to the Kingdom','00:03:39','2014-06-13','Alternative metal, rap metal, industrial metal, nu metal','Original',4),
-(379,'A Line in the Sand','00:06:36','2014-06-17','Nu metal, Metal alternativo, Alternativa/independiente, Heavy metal, Rock','Original',4);
+(379,'A Line in the Sand','00:06:36','2014-06-17','Nu metal, Metal alternativo, Alternativa/independiente, Heavy metal, Rock','Original',4),
+(380,'My December','00:04:21','2000-12-15','Rock alternativo, emo rap, piano rock','Original',4),
+(381,'Hit the Floor','00:02:45','2003-03-25','Rap metal, metal alternativo','Original',4);
 
 
 
@@ -1060,7 +1062,10 @@ INSERT INTO `Canciones_Album` VALUES
 (442,7,376,4),
 (443,56,377,15),
 (444,67,378,1),
-(445,67,379,12);
+(445,67,379,12),
+(446,7,380,13),
+(447,57,381,5),
+(448,58,381,5);
 
 
 
@@ -1234,7 +1239,9 @@ INSERT INTO `Auditorias` VALUES
 (133,'Grupo','Audioslave','raul@localhost','2023-08-27 00:11:13','Grupo actualizado',9),
 (134,'Cancion','The Messenger','raul@localhost','2023-08-27 17:54:35','Cancion agregada',377),
 (135,'Cancion','Keys to the Kingdom','raul@localhost','2023-09-09 16:49:24','Cancion agregada',378),
-(136,'Cancion','A Line in the Sand','raul@localhost','2023-09-09 16:51:00','Cancion agregada',379);
+(136,'Cancion','A Line in the Sand','raul@localhost','2023-09-09 16:51:00','Cancion agregada',379),
+(137,'Cancion','My December','raul090700@gmail.com','2023-12-16 19:08:57','Cancion agregada',380),
+(138,'Cancion','Hit the Floor','raul090700@gmail.com','2023-12-16 19:13:24','Cancion agregada',381);
 
 
 

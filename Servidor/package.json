@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon build/index.js",
-    "start": "node build/index.js"
+    "start": "node build/index.js",
+    "build": "tsc -w"
   },
   "keywords": [],
   "author": "Raúl Gabriel Gerónimo Herrera",
