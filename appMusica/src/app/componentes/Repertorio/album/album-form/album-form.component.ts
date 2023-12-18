@@ -97,6 +97,7 @@ export class AlbumFormComponent implements OnInit {
 
   actualiza() {
     const params = this.activatedRoute.snapshot.params;
+    
     this.Service.update(params['idAlbum'], this.album).subscribe(
       (res) => {
         console.log(res);

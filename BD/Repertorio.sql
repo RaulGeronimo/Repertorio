@@ -454,8 +454,8 @@ DROP PROCEDURE IF EXISTS `buscar_usuario`;
 DELIMITER $$
 CREATE PROCEDURE `buscar_usuario`(IN UsuarioB VARCHAR(60), IN PasswordB VARCHAR(60))
 BEGIN
-	SELECT * FROM Usuario WHERE (Usuario = UsuarioB AND Password = MD5(PasswordB)) OR (Correo = UsuarioB AND Password = MD5(PasswordB));
     SET @Correo := (SELECT Correo FROM Usuario WHERE (Usuario = UsuarioB AND Password = MD5(PasswordB)) OR (Correo = UsuarioB AND Password = MD5(PasswordB)));
+	SELECT * FROM Usuario WHERE (Usuario = UsuarioB AND Password = MD5(PasswordB)) OR (Correo = UsuarioB AND Password = MD5(PasswordB));
 END$$
 
 DELIMITER ;

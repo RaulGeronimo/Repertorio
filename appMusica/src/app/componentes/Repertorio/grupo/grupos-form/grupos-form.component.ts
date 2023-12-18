@@ -86,6 +86,8 @@ export class GruposFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.grupo.Fin = (this.grupo.Fin != null) ? this.grupo.Fin : '';
+
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['idGrupo'], this.grupo).subscribe(
       (res) => {

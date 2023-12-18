@@ -90,6 +90,8 @@ export class ArtistaFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.artista.FechaFinado = (this.artista.FechaFinado != null) ? this.artista.FechaFinado : '';
+
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['idArtista'], this.artista).subscribe(
       (res) => {

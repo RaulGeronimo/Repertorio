@@ -96,6 +96,8 @@ export class ArtistaGrupoFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.artista_Grupo.FechaFin = (this.artista_Grupo.FechaFin != null) ? this.artista_Grupo.FechaFin : '';
+
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['Codigo'], this.artista_Grupo).subscribe(
       (res) => {

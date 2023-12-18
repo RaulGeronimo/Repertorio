@@ -86,6 +86,7 @@ export class CancionesAlbumFormComponent implements OnInit {
 
   actualiza() {
     const params = this.activatedRoute.snapshot.params;
+    
     this.Service.update(params['Codigo'], this.cancionesAlbum).subscribe(
       (res) => {
         console.log(res);
