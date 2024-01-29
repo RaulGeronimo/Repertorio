@@ -16,28 +16,58 @@ const database_1 = __importDefault(require("../database"));
 class GrupoController {
     lista(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const grupo = yield database_1.default.query('SELECT * FROM Vista_Grupo');
+            const grupo = yield database_1.default.query("SELECT * FROM Vista_Grupo");
             res.json(grupo);
         });
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO Grupo SET ?', [req.body]);
-            res.json({ message: 'Se guardo un Grupo' });
+            //await pool.query('INSERT INTO Grupo SET ?', [req.body]);
+            const values = [
+                req.body.Nombre,
+                req.body.Origen,
+                req.body.Genero,
+                req.body.Inicio,
+                req.body.Fin,
+                req.body.Sellos,
+                req.body.Estado,
+                req.body.SitioWeb,
+                req.body.Idioma,
+                req.body.Logo,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL crear_grupo(?)", [values]);
+            res.json({ message: "Se guardo un Grupo" });
         });
     }
     actualizar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idGrupo } = req.params;
-            yield database_1.default.query('UPDATE Grupo SET ? WHERE idGrupo = ?', [req.body, idGrupo]);
-            res.json({ message: 'Se modifico un Grupo' });
+            //await pool.query("UPDATE Grupo SET ? WHERE idGrupo = ?", [ req.body, idGrupo ]);
+            const values = [
+                req.body.Nombre,
+                req.body.Origen,
+                req.body.Genero,
+                req.body.Inicio,
+                req.body.Fin,
+                req.body.Sellos,
+                req.body.Estado,
+                req.body.SitioWeb,
+                req.body.Idioma,
+                req.body.Logo,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL actualizar_grupo(?,?)", [idGrupo, values]);
+            res.json({ message: "Se modifico un Grupo" });
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idGrupo } = req.params;
-            yield database_1.default.query('DELETE FROM Grupo WHERE idGrupo = ?', [idGrupo]);
-            res.json({ message: 'Se elimino un Grupo' });
+            const { Usuario } = req.params;
+            //await pool.query("DELETE FROM Grupo WHERE idGrupo = ?", [idGrupo]);
+            yield database_1.default.query("CALL eliminar_grupo(?,?)", [idGrupo, Usuario]);
+            res.json({ message: "Se elimino un Grupo" });
         });
     }
     buscar(req, res) {
@@ -48,7 +78,7 @@ class GrupoController {
             if (grupo.length > 0) {
                 return res.json(grupo[0]);
             }
-            res.status(404).json({ message: 'No existe el Grupo' });
+            res.status(404).json({ message: "No existe el Grupo" });
         });
     }
 }

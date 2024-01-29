@@ -18,6 +18,7 @@ export class GruposListComponent implements OnInit {
   //Creamos el arreglo vacio llamado Grupos
   Grupos: any = [];
   total: number = 0;
+  Usuario: string = '';
 
   //Busqueda
   search: any;
@@ -71,7 +72,8 @@ export class GruposListComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.Service.delete(idGrupo).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.Service.delete(idGrupo, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

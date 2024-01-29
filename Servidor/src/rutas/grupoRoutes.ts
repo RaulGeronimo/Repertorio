@@ -12,7 +12,7 @@ class GrupoRoutes{
         this.router.get('/', grupoController.lista);
         this.router.post('/', grupoController.crear);
         this.router.put('/:idGrupo', grupoController.actualizar);
-        this.router.delete('/:idGrupo', grupoController.eliminar);
+        this.router.delete('/:idGrupo/:Usuario', grupoController.eliminar);
         this.router.get('/:idGrupo',grupoController.buscar);
     }
 }

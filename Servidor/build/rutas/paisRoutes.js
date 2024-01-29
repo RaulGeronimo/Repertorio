@@ -14,7 +14,7 @@ class PaisRoutes {
         this.router.get('/', paisController_1.default.lista);
         this.router.post('/', paisController_1.default.crear);
         this.router.put('/:idPais', paisController_1.default.actualizar);
-        this.router.delete('/:idPais', paisController_1.default.eliminar);
+        this.router.delete('/:idPais/:Usuario', paisController_1.default.eliminar);
         this.router.get('/:idPais', paisController_1.default.buscar);
     }
 }

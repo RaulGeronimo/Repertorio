@@ -16,38 +16,60 @@ const database_1 = __importDefault(require("../database"));
 class CancionesController {
     lista(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const canciones = yield database_1.default.query('SELECT * FROM Vista_Canciones');
+            const canciones = yield database_1.default.query("SELECT * FROM Vista_Canciones");
             res.json(canciones);
         });
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO Canciones SET ?', [req.body]);
-            res.json({ message: 'Se guardo una Cancion' });
+            //await pool.query('INSERT INTO Canciones SET ?', [req.body]);
+            const values = [
+                req.body.Nombre,
+                req.body.Duracion,
+                req.body.Publicacion,
+                req.body.Genero,
+                req.body.Interpretacion,
+                req.body.idGrupo,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL crear_canciones(?)", [values]);
+            res.json({ message: "Se guardo una Cancion" });
         });
     }
     actualizar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idCancion } = req.params;
-            yield database_1.default.query('UPDATE Canciones SET ? WHERE idCancion = ?', [req.body, idCancion]);
-            res.json({ message: 'Se modifico una Cancion' });
+            //await pool.query('UPDATE Canciones SET ? WHERE idCancion = ?', [req.body, idCancion]);
+            const values = [
+                req.body.Nombre,
+                req.body.Duracion,
+                req.body.Publicacion,
+                req.body.Genero,
+                req.body.Interpretacion,
+                req.body.idGrupo,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL actualizar_canciones(?,?)", [idCancion, values]);
+            res.json({ message: "Se modifico una Cancion" });
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idCancion } = req.params;
-            yield database_1.default.query('DELETE FROM Canciones WHERE idCancion = ?', [idCancion]);
-            res.json({ message: 'Se elimino una Cancion' });
+            //await pool.query('DELETE FROM Canciones WHERE idCancion = ?', [idCancion]);
+            const { Usuario } = req.params;
+            yield database_1.default.query("CALL eliminar_canciones(?,?)", [idCancion, Usuario]);
+            res.json({ message: "Se elimino una Cancion" });
         });
     }
     buscar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idCancion } = req.params;
-            const canciones = yield database_1.default.query('SELECT *, DATE_FORMAT(Publicacion, \'%Y-%m-%d\') AS Publicacion FROM Canciones WHERE idCancion = ?', [idCancion]);
+            const canciones = yield database_1.default.query("SELECT *, DATE_FORMAT(Publicacion, '%Y-%m-%d') AS Publicacion FROM Canciones WHERE idCancion = ?", [idCancion]);
             if (canciones.length > 0) {
                 return res.json(canciones[0]);
             }
-            res.status(404).json({ message: 'No existe la Cancion' });
+            res.status(404).json({ message: "No existe la Cancion" });
         });
     }
 }

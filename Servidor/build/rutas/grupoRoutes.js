@@ -14,7 +14,7 @@ class GrupoRoutes {
         this.router.get('/', grupoController_1.default.lista);
         this.router.post('/', grupoController_1.default.crear);
         this.router.put('/:idGrupo', grupoController_1.default.actualizar);
-        this.router.delete('/:idGrupo', grupoController_1.default.eliminar);
+        this.router.delete('/:idGrupo/:Usuario', grupoController_1.default.eliminar);
         this.router.get('/:idGrupo', grupoController_1.default.buscar);
     }
 }

@@ -4,4 +4,5 @@ export interface Instrumentos{
     Nombre?: string;
     Descripcion?: string;
     Foto?: string;
+    Usuario?: string;
 }

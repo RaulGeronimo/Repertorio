@@ -14,7 +14,7 @@ class ArtistaRoutes {
         this.router.get('/', artistaController_1.default.lista);
         this.router.post('/', artistaController_1.default.crear);
         this.router.put('/:idArtista', artistaController_1.default.actualizar);
-        this.router.delete('/:idArtista', artistaController_1.default.eliminar);
+        this.router.delete('/:idArtista/:Usuario', artistaController_1.default.eliminar);
         this.router.get('/:idArtista', artistaController_1.default.buscar);
     }
 }

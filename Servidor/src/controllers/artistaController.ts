@@ -8,19 +8,49 @@ class ArtistaController{
     }
 
     public async crear(req: Request, res:Response){
-        await pool.query('INSERT INTO Artista SET ?', [req.body]);
+        //await pool.query('INSERT INTO Artista SET ?', [req.body]);
+        const values = [
+            req.body.Nombre,
+            req.body.NombreArtistico,
+            req.body.Genero,
+            req.body.FechaNacimiento,
+            req.body.FechaFinado,
+            req.body.Estatura,
+            req.body.idNacionalidad,
+            req.body.Instrumentos,
+            req.body.TipoVoz,
+            req.body.Foto,
+            req.body.Usuario,
+          ];
+          await pool.query("CALL crear_artista(?)", [values]);
         res.json({message: 'Se guardo un Artista'});
     }
 
     public async actualizar(req: Request, res: Response){
         const { idArtista } = req.params;
-        await pool.query('UPDATE Artista SET ? WHERE idArtista = ?', [req.body, idArtista]);
+        //await pool.query('UPDATE Artista SET ? WHERE idArtista = ?', [req.body, idArtista]);
+        const values = [
+            req.body.Nombre,
+            req.body.NombreArtistico,
+            req.body.Genero,
+            req.body.FechaNacimiento,
+            req.body.FechaFinado,
+            req.body.Estatura,
+            req.body.idNacionalidad,
+            req.body.Instrumentos,
+            req.body.TipoVoz,
+            req.body.Foto,
+            req.body.Usuario,
+          ];
+          await pool.query("CALL actualizar_artista(?,?)", [idArtista, values]);
         res.json({message: 'Se modifico un Artista'});
     }
 
     public async eliminar(req: Request, res: Response){
         const { idArtista } = req.params;
-        await pool.query('DELETE FROM Artista WHERE idArtista = ?', [idArtista]);
+        const { Usuario } = req.params;
+        //await pool.query('DELETE FROM Artista WHERE idArtista = ?', [idArtista]);
+        await pool.query("CALL eliminar_artista(?,?)", [idArtista, Usuario]);
         res.json({message: 'Se elimino un Artista'});
     }
 

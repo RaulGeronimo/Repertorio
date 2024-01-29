@@ -12,7 +12,7 @@ class PaisRoutes{
         this.router.get('/', paisController.lista);
         this.router.post('/', paisController.crear);
         this.router.put('/:idPais', paisController.actualizar);
-        this.router.delete('/:idPais', paisController.eliminar);
+        this.router.delete('/:idPais/:Usuario', paisController.eliminar);
         this.router.get('/:idPais',paisController.buscar);
     }
 }

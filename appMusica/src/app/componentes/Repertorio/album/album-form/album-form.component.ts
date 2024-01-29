@@ -81,6 +81,7 @@ export class AlbumFormComponent implements OnInit {
   }
 
   add() {
+    this.album.Usuario = localStorage.getItem('Correo') || '';
     this.Service.create(this.album).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
@@ -96,6 +97,7 @@ export class AlbumFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.album.Usuario = localStorage.getItem('Correo') || '';
     const params = this.activatedRoute.snapshot.params;
     
     this.Service.update(params['idAlbum'], this.album).subscribe(

@@ -21,6 +21,7 @@ export class BuscaAlbumGrupoComponent implements OnInit {
   Album: any = [];
   Grupo: any = [];
   total: number = 0;
+  Usuario: string = '';
 
   //Busqueda
   search: any;
@@ -97,7 +98,8 @@ export class BuscaAlbumGrupoComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.AlbumService.delete(idAlbum).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.AlbumService.delete(idAlbum, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

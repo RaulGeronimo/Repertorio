@@ -70,6 +70,7 @@ export class CancionesFormComponent implements OnInit {
   }
 
   add() {
+    this.cancion.Usuario = localStorage.getItem('Correo') || '';
     this.Service.create(this.cancion).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
@@ -85,6 +86,7 @@ export class CancionesFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.cancion.Usuario = localStorage.getItem('Correo') || '';
     const params = this.activatedRoute.snapshot.params;
     
     this.Service.update(params['idCancion'], this.cancion).subscribe(

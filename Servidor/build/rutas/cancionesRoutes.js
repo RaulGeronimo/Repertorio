@@ -14,7 +14,7 @@ class CancionesRoutes {
         this.router.get('/', cancionesController_1.default.lista);
         this.router.post('/', cancionesController_1.default.crear);
         this.router.put('/:idCancion', cancionesController_1.default.actualizar);
-        this.router.delete('/:idCancion', cancionesController_1.default.eliminar);
+        this.router.delete('/:idCancion/:Usuario', cancionesController_1.default.eliminar);
         this.router.get('/:idCancion', cancionesController_1.default.buscar);
     }
 }

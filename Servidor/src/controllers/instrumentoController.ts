@@ -9,19 +9,35 @@ class InstrumentoController{
     }
 
     public async crear(req: Request, res:Response){
-        await pool.query('INSERT INTO Instrumento SET ?', [req.body]);
+        /* await pool.query('INSERT INTO Instrumento SET ?', [req.body]); */
+        const values = [
+            req.body.Nombre,
+            req.body.Descripcion,
+            req.body.Foto,
+            req.body.Usuario,
+          ];
+          await pool.query('CALL crear_instrumento(?)', [values]);
         res.json({message: 'Se guardo un Instrumento'});
     }
 
     public async actualizar(req: Request, res: Response){
         const { idInstrumento } = req.params;
-        await pool.query('UPDATE Instrumento SET ? WHERE idInstrumento = ?', [req.body, idInstrumento]);
+        /* await pool.query('UPDATE Instrumento SET ? WHERE idInstrumento = ?', [req.body, idInstrumento]); */
+        const values = [
+            req.body.Nombre,
+            req.body.Descripcion,
+            req.body.Foto,
+            req.body.Usuario,
+          ];
+        await pool.query("CALL actualizar_instrumento(?,?)", [idInstrumento, values]);
         res.json({message: 'Se modifico un Instrumento'});
     }
 
     public async eliminar(req: Request, res: Response){
         const { idInstrumento } = req.params;
-        await pool.query('DELETE FROM Instrumento WHERE idInstrumento = ?', [idInstrumento]);
+        const { Usuario } = req.params;
+        //await pool.query('DELETE FROM Instrumento WHERE idInstrumento = ?', [idInstrumento]);
+        await pool.query("CALL eliminar_instrumento(?,?)", [idInstrumento, Usuario]);
         res.json({message: 'Se elimino un Instrumento'});
     }
 

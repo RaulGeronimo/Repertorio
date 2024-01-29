@@ -22,21 +22,51 @@ class ArtistaController {
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO Artista SET ?', [req.body]);
+            //await pool.query('INSERT INTO Artista SET ?', [req.body]);
+            const values = [
+                req.body.Nombre,
+                req.body.NombreArtistico,
+                req.body.Genero,
+                req.body.FechaNacimiento,
+                req.body.FechaFinado,
+                req.body.Estatura,
+                req.body.idNacionalidad,
+                req.body.Instrumentos,
+                req.body.TipoVoz,
+                req.body.Foto,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL crear_artista(?)", [values]);
             res.json({ message: 'Se guardo un Artista' });
         });
     }
     actualizar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idArtista } = req.params;
-            yield database_1.default.query('UPDATE Artista SET ? WHERE idArtista = ?', [req.body, idArtista]);
+            //await pool.query('UPDATE Artista SET ? WHERE idArtista = ?', [req.body, idArtista]);
+            const values = [
+                req.body.Nombre,
+                req.body.NombreArtistico,
+                req.body.Genero,
+                req.body.FechaNacimiento,
+                req.body.FechaFinado,
+                req.body.Estatura,
+                req.body.idNacionalidad,
+                req.body.Instrumentos,
+                req.body.TipoVoz,
+                req.body.Foto,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL actualizar_artista(?,?)", [idArtista, values]);
             res.json({ message: 'Se modifico un Artista' });
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idArtista } = req.params;
-            yield database_1.default.query('DELETE FROM Artista WHERE idArtista = ?', [idArtista]);
+            const { Usuario } = req.params;
+            //await pool.query('DELETE FROM Artista WHERE idArtista = ?', [idArtista]);
+            yield database_1.default.query("CALL eliminar_artista(?,?)", [idArtista, Usuario]);
             res.json({ message: 'Se elimino un Artista' });
         });
     }

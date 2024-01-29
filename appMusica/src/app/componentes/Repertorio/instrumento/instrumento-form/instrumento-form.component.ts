@@ -63,6 +63,7 @@ export class InstrumentoFormComponent implements OnInit {
   }
 
   add() {
+    this.instrumentos.Usuario = localStorage.getItem('Correo') || '';
     this.instrumentosService.createInstrumento(this.instrumentos).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
@@ -78,6 +79,7 @@ export class InstrumentoFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.instrumentos.Usuario = localStorage.getItem('Correo') || '';
     const params = this.activatedRoute.snapshot.params;
     this.instrumentosService
       .updateInstrumento(params['idInstrumento'], this.instrumentos)

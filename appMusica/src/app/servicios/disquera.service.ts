@@ -28,8 +28,8 @@ export class DisqueraService {
     return this.http.post(`${this.API_URI}/disquera`, disquera);
   }
 
-  delete(idDisquera: string) {
-    return this.http.delete(`${this.API_URI}/disquera/${idDisquera}`);
+  delete(idDisquera: string, Usuario: string) {
+    return this.http.delete(`${this.API_URI}/disquera/${idDisquera}/${Usuario}`);
   }
 
   update(idDisquera: string, update: Disquera): Observable<Disquera> {

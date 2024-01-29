@@ -75,6 +75,7 @@ export class ArtistaFormComponent implements OnInit {
   }
 
   add() {
+    this.artista.Usuario = localStorage.getItem('Correo') || '';
     this.Service.create(this.artista).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
@@ -90,6 +91,7 @@ export class ArtistaFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.artista.Usuario = localStorage.getItem('Correo') || '';
     this.artista.FechaFinado = (this.artista.FechaFinado != null) ? this.artista.FechaFinado : '';
 
     const params = this.activatedRoute.snapshot.params;

@@ -29,8 +29,8 @@ export class GruposService {
     return this.http.post(`${this.API_URI}/grupo`, grupos);
   }
 
-  delete(idGrupo: string) {
-    return this.http.delete(`${this.API_URI}/grupo/${idGrupo}`);
+  delete(idGrupo: string, Usuario: string) {
+    return this.http.delete(`${this.API_URI}/grupo/${idGrupo}/${Usuario}`);
   }
 
   update(idGrupo: string, update: Grupos): Observable<Grupos> {

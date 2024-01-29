@@ -18,6 +18,7 @@ export class CancionesListComponent implements OnInit {
   //Creamos el arreglo vacio llamado Canciones
   Canciones: any = [];
   total: number = 0;
+  Usuario: string = '';
 
   //Busqueda
   search: any;
@@ -69,7 +70,8 @@ export class CancionesListComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.Service.delete(idCancion).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.Service.delete(idCancion, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

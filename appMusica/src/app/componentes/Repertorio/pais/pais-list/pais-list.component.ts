@@ -17,6 +17,7 @@ export class PaisListComponent implements OnInit {
   total: number = 0;
   search: any;
   show: boolean = false;
+  Usuario: string = '';
 
   constructor(
     private paisService: PaisService,
@@ -80,7 +81,8 @@ export class PaisListComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         ) */
-        this.paisService.deletePais(idPais).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.paisService.deletePais(idPais, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

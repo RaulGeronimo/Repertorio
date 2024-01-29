@@ -23,21 +23,37 @@ class InstrumentoController {
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO Instrumento SET ?', [req.body]);
+            /* await pool.query('INSERT INTO Instrumento SET ?', [req.body]); */
+            const values = [
+                req.body.Nombre,
+                req.body.Descripcion,
+                req.body.Foto,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query('CALL crear_instrumento(?)', [values]);
             res.json({ message: 'Se guardo un Instrumento' });
         });
     }
     actualizar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idInstrumento } = req.params;
-            yield database_1.default.query('UPDATE Instrumento SET ? WHERE idInstrumento = ?', [req.body, idInstrumento]);
+            /* await pool.query('UPDATE Instrumento SET ? WHERE idInstrumento = ?', [req.body, idInstrumento]); */
+            const values = [
+                req.body.Nombre,
+                req.body.Descripcion,
+                req.body.Foto,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL actualizar_instrumento(?,?)", [idInstrumento, values]);
             res.json({ message: 'Se modifico un Instrumento' });
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idInstrumento } = req.params;
-            yield database_1.default.query('DELETE FROM Instrumento WHERE idInstrumento = ?', [idInstrumento]);
+            const { Usuario } = req.params;
+            //await pool.query('DELETE FROM Instrumento WHERE idInstrumento = ?', [idInstrumento]);
+            yield database_1.default.query("CALL eliminar_instrumento(?,?)", [idInstrumento, Usuario]);
             res.json({ message: 'Se elimino un Instrumento' });
         });
     }

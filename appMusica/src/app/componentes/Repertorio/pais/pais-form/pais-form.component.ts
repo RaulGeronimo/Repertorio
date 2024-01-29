@@ -63,6 +63,7 @@ export class PaisFormComponent implements OnInit {
   }
 
   add() {
+    this.pais.Usuario = localStorage.getItem('Correo') || '';
     this.paisService.createPais(this.pais).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
@@ -78,6 +79,7 @@ export class PaisFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.pais.Usuario = localStorage.getItem('Correo') || '';
     const params = this.activatedRoute.snapshot.params;
     this.paisService.updatePais(params['idPais'], this.pais).subscribe(
       (res) => {

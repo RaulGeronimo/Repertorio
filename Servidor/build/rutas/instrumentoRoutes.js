@@ -14,7 +14,7 @@ class InstrumentoRoutes {
         this.router.get('/', instrumentoController_1.default.lista);
         this.router.post('/', instrumentoController_1.default.crear);
         this.router.put('/:idInstrumento', instrumentoController_1.default.actualizar);
-        this.router.delete('/:idInstrumento', instrumentoController_1.default.eliminar);
+        this.router.delete('/:idInstrumento/:Usuario', instrumentoController_1.default.eliminar);
         this.router.get('/:idInstrumento', instrumentoController_1.default.buscar);
     }
 }

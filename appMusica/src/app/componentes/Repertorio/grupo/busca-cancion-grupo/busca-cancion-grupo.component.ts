@@ -20,6 +20,7 @@ export class BuscaCancionGrupoComponent implements OnInit {
   //Creamos el arreglo vacio llamado Canciones
   Canciones: any = [];
   Grupo: any = [];
+  Usuario: string = '';
 
   //Busqueda
   search: any;
@@ -93,7 +94,8 @@ export class BuscaCancionGrupoComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.CancionesAlbumService.delete(idCancion).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.CancionesAlbumService.delete(idCancion, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

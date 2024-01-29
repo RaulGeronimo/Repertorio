@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.removeItem('Usuario');
-    localStorage.removeItem('User');
+    localStorage.removeItem('Correo');
   }
 
   login() {
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('Rol', this.user.Rol.toString());
 
           localStorage.setItem('Usuario', this.user.Usuario!);
+          localStorage.setItem('Correo', this.user.Correo!);
           this.toastr.success(
             `Bienvenido '${this.user.Usuario}'`,
             'Usuario Logeado'

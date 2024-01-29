@@ -28,8 +28,8 @@ export class PaisService {
     return this.http.post(`${this.API_URI}/pais`, pais);
   }
 
-  deletePais(idPais: string) {
-    return this.http.delete(`${this.API_URI}/pais/${idPais}`);
+  deletePais(idPais: string, Usuario: string) {
+    return this.http.delete(`${this.API_URI}/pais/${idPais}/${Usuario}`);
   }
 
   updatePais(idPais: string, updatePais: Pais): Observable<Pais> {

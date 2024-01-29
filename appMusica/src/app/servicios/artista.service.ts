@@ -28,8 +28,8 @@ export class ArtistaService {
     return this.http.post(`${this.API_URI}/artista`, artista);
   }
 
-  delete(idArtista: string) {
-    return this.http.delete(`${this.API_URI}/artista/${idArtista}`);
+  delete(idArtista: string, Usuario: string) {
+    return this.http.delete(`${this.API_URI}/artista/${idArtista}/${Usuario}`);
   }
 
   update(idArtista: string, update: Artista): Observable<Artista> {

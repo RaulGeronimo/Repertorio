@@ -9,4 +9,5 @@ export interface Album{
     Grabacion?: string;
     Genero?: string;
     Portada?: string;
+    Usuario?: string;
 }

@@ -29,8 +29,8 @@ export class CancionesService {
     return this.http.post(`${this.API_URI}/canciones`, cancion);
   }
 
-  delete(idCancion: string) {
-    return this.http.delete(`${this.API_URI}/canciones/${idCancion}`);
+  delete(idCancion: string, Usuario: string) {
+    return this.http.delete(`${this.API_URI}/canciones/${idCancion}/${Usuario}`);
   }
 
   update(idCancion: string, update: Cancion): Observable<Cancion> {

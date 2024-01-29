@@ -71,6 +71,7 @@ export class GruposFormComponent implements OnInit {
   }
 
   add() {
+    this.grupo.Usuario = localStorage.getItem('Correo') || '';
     this.Service.create(this.grupo).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
@@ -86,6 +87,7 @@ export class GruposFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.grupo.Usuario = localStorage.getItem('Correo') || '';
     this.grupo.Fin = (this.grupo.Fin != null) ? this.grupo.Fin : '';
 
     const params = this.activatedRoute.snapshot.params;

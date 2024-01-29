@@ -28,8 +28,8 @@ export class InstrumentosService {
     return this.http.post(`${this.API_URI}/instrumento`, instrumentos);
   }
 
-  deleteInstrumento(idInstrumento: string) {
-    return this.http.delete(`${this.API_URI}/instrumento/${idInstrumento}`);
+  deleteInstrumento(idInstrumento: string, Usuario: string) {
+    return this.http.delete(`${this.API_URI}/instrumento/${idInstrumento}/${Usuario}`);
   }
 
   updateInstrumento(

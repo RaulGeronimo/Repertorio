@@ -17,6 +17,7 @@ export class ArtistaListComponent implements OnInit {
   //Creamos el arreglo vacio llamado artistas
   artistas: any = [];
   total: number = 0;
+  Usuario: string = '';
 
   //Busqueda
   search: any;
@@ -73,7 +74,8 @@ export class ArtistaListComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.Service.delete(idArtista).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.Service.delete(idArtista, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

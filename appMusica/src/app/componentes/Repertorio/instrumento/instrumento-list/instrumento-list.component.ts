@@ -17,6 +17,7 @@ export class InstrumentoListComponent implements OnInit {
   total: number = 0;
   search: any;
   show: boolean = false;
+  Usuario: string = '';
 
   constructor(
     private instrumentosService: InstrumentosService,
@@ -80,7 +81,8 @@ export class InstrumentoListComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         ) */
-        this.instrumentosService.deleteInstrumento(idInstrumento).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.instrumentosService.deleteInstrumento(idInstrumento, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

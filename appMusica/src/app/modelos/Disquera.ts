@@ -7,4 +7,5 @@ export interface Disquera{
     Generos?: string;
     idPais?: string;
     Logo?: string;
+    Usuario?: string;
 }

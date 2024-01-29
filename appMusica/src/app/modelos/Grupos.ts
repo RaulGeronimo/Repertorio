@@ -11,4 +11,5 @@ export interface Grupos{
     SitioWeb?: string;
     Idioma?: string;
     Logo?: string;
+    Usuario?: string;
 }

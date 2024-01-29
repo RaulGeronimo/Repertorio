@@ -14,7 +14,7 @@ class AlbumRoutes {
         this.router.get('/', albumController_1.default.lista);
         this.router.post('/', albumController_1.default.crear);
         this.router.put('/:idAlbum', albumController_1.default.actualizar);
-        this.router.delete('/:idAlbum', albumController_1.default.eliminar);
+        this.router.delete('/:idAlbum/:Usuario', albumController_1.default.eliminar);
         this.router.get('/:idAlbum', albumController_1.default.buscar);
     }
 }

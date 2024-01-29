@@ -7,4 +7,5 @@ export interface Cancion{
     Genero?: string;
     Interpretacion?: string;
     idGrupo?: string;
+    Usuario?: string;
 }

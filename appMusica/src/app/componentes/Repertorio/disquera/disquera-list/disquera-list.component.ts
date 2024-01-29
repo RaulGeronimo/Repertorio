@@ -17,6 +17,7 @@ export class DisqueraListComponent implements OnInit {
   total: number =0;
   search: any;
   show: boolean = false;
+  Usuario: string = '';
 
   constructor(
     private Service: DisqueraService,
@@ -76,7 +77,8 @@ export class DisqueraListComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         ) */
-        this.Service.delete(idDisquera).subscribe(
+        this.Usuario = localStorage.getItem('Correo') || '';
+        this.Service.delete(idDisquera, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
             console.log(res);

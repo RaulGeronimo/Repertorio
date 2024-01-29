@@ -28,8 +28,8 @@ export class AlbumService {
     return this.http.post(`${this.API_URI}/album`, album);
   }
 
-  delete(idAlbum: string) {
-    return this.http.delete(`${this.API_URI}/album/${idAlbum}`);
+  delete(idAlbum: string, Usuario: string) {
+    return this.http.delete(`${this.API_URI}/album/${idAlbum}/${Usuario}`);
   }
 
   update(idAlbum: string, update: Album): Observable<Album> {

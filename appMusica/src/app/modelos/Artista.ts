@@ -11,4 +11,5 @@ export interface Artista{
     Instrumentos?: string;
     TipoVoz?: string;
     Foto?: string;
+    Usuario?: string;
 }

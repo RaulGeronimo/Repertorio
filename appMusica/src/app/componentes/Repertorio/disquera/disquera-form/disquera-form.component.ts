@@ -67,6 +67,7 @@ export class DisqueraFormComponent implements OnInit {
   }
 
   add() {
+    this.disquera.Usuario = localStorage.getItem('Correo') || '';
     this.Service.create(this.disquera).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
@@ -82,6 +83,7 @@ export class DisqueraFormComponent implements OnInit {
   }
 
   actualiza() {
+    this.disquera.Usuario = localStorage.getItem('Correo') || '';
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['idDisquera'], this.disquera).subscribe(
       (res) => {

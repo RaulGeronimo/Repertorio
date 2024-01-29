@@ -5,4 +5,5 @@ export interface Pais{
     Nacionalidad?: string;
     Continente?: string;
     Bandera?: string;
+    Usuario?: string;
 }

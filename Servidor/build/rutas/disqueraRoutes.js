@@ -14,7 +14,7 @@ class DisqueraRoutes {
         this.router.get('/', disqueraController_1.default.lista);
         this.router.post('/', disqueraController_1.default.crear);
         this.router.put('/:idDisquera', disqueraController_1.default.actualizar);
-        this.router.delete('/:idDisquera', disqueraController_1.default.eliminar);
+        this.router.delete('/:idDisquera/:Usuario', disqueraController_1.default.eliminar);
         this.router.get('/:idDisquera', disqueraController_1.default.buscar);
     }
 }

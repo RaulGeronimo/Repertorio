@@ -16,38 +16,58 @@ const database_1 = __importDefault(require("../database"));
 class PaisController {
     lista(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const pais = yield database_1.default.query('SELECT * FROM Pais ORDER BY Nombre');
+            const pais = yield database_1.default.query("SELECT * FROM Pais ORDER BY Nombre");
             res.json(pais);
         });
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO Pais SET ?', [req.body]);
-            res.json({ message: 'Se guardo un Pais' });
+            /* await pool.query('INSERT INTO Pais SET ?', [req.body]); */
+            const values = [
+                req.body.Nombre,
+                req.body.Nacionalidad,
+                req.body.Continente,
+                req.body.Bandera,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL crear_pais(?)", [values]);
+            res.json({ message: "Se guardo un Pais" });
         });
     }
     actualizar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idPais } = req.params;
-            yield database_1.default.query('UPDATE Pais SET ? WHERE idPais = ?', [req.body, idPais]);
-            res.json({ message: 'Se modifico un Pais' });
+            /* await pool.query('UPDATE Pais SET ? WHERE idPais = ?', [req.body, idPais]); */
+            const values = [
+                req.body.Nombre,
+                req.body.Nacionalidad,
+                req.body.Continente,
+                req.body.Bandera,
+                req.body.Usuario,
+            ];
+            yield database_1.default.query("CALL actualizar_pais(?,?)", [idPais, values]);
+            res.json({ message: "Se modifico un Pais" });
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idPais } = req.params;
-            yield database_1.default.query('DELETE FROM Pais WHERE idPais = ?', [idPais]);
-            res.json({ message: 'Se elimino un Pais' });
+            const { Usuario } = req.params;
+            /* await pool.query('DELETE FROM Pais WHERE idPais = ?', [idPais]); */
+            yield database_1.default.query("CALL eliminar_pais(?,?)", [idPais, Usuario]);
+            res.json({ message: "Se elimino un Pais" });
         });
     }
     buscar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idPais } = req.params;
-            const album = yield database_1.default.query('SELECT * FROM Pais WHERE idPais = ?', [idPais]);
+            const album = yield database_1.default.query("SELECT * FROM Pais WHERE idPais = ?", [
+                idPais,
+            ]);
             if (album.length > 0) {
                 return res.json(album[0]);
             }
-            res.status(404).json({ message: 'No existe el Pais' });
+            res.status(404).json({ message: "No existe el Pais" });
         });
     }
 }
