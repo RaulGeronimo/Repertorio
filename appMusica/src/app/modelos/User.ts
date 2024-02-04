@@ -6,5 +6,6 @@ export interface User{
     Usuario?: string;
     Correo?: string;
     Password?: string;
+    FechaNacimiento?: string;
     Rol: number;
 }

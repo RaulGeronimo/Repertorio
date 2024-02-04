@@ -28,6 +28,15 @@
     }
 
     td:nth-of-type(8):before {
+        content: "Fecha Nacimiento";
+    }
+    td:nth-of-type(9):before {
+        content: "Edad";
+    }
+    td:nth-of-type(10):before {
+        content: "Dias para cumpleaños";
+    }
+    td:nth-of-type(11):before {
         content: "Rol";
     }
 }

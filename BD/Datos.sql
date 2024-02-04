@@ -1248,8 +1248,10 @@ INSERT INTO `Auditorias` VALUES
 
 
 INSERT INTO `Usuario` VALUES
-(1,'Raúl Gabriel','Gerónimo','Herrera','Raul','raul090700@gmail.com','c90d6d172779ddee6dae9af3aa21d7bc','2023-11-25 10:11:32',1),
-(2,'Sofia','Ramos','Páez ','Sofibet','sofibet45@gmail.com','e10adc3949ba59abbe56e057f20f883e','2023-11-25 17:11:07',0),
-(3,'Osvaldo ','Torres ','Sánchez ','osvaldo123','osvaldoyts220@gmail.com','2b95659c72eeffc4fcbb084a6a34a70b','2023-11-25 20:06:21',0),
-(4,'Zai','Mia','U','ZJ','bzai5204@gmail.com','33ea63cd09c8f7b2bec2403c2f9f37c1','2023-11-25 20:27:05',0),
-(5,'Jonathan ','Eslava','Caza','jonathan ','jadrian1112@gmail.com','543a28083cb237e9372948c8f77cbfc5','2023-11-25 21:11:03',0);
+(1,'Raúl Gabriel','Gerónimo','Herrera','Raul','raul090700@gmail.com','c90d6d172779ddee6dae9af3aa21d7bc','2023-11-25 10:11:32','2000-09-07',1),
+(2,'Sofia','Ramos','Páez ','Sofibet','sofibet45@gmail.com','e10adc3949ba59abbe56e057f20f883e','2023-11-25 17:11:07','1999-09-05',0),
+/* (3,'Osvaldo ','Torres ','Sánchez ','osvaldo123','osvaldoyts220@gmail.com','2b95659c72eeffc4fcbb084a6a34a70b','2023-11-25 20:06:21',0),
+(4,'Zai','Mia','U','ZJ','bzai5204@gmail.com','33ea63cd09c8f7b2bec2403c2f9f37c1','2023-11-25 20:27:05',0), */
+(5,'Jonathan ','Eslava','Caza','jonathan ','jadrian1112@gmail.com','543a28083cb237e9372948c8f77cbfc5','2023-11-25 21:11:03','2000-09-04',0),
+(6,'Luis Manuel','Bastida','Lemus','Lemus','lemus17bl@gmail.com','404b13e6f4601682e70adac2457b2198','2024-02-04 00:40:17','2000-09-17',0),
+(7,'Brian Alejandro','Rodriguez','Cruz','Brian','barc140300@gmail.com','4d236810821e8e83a025f2a83ea31820','2024-02-04 00:41:51','2000-03-14',0);

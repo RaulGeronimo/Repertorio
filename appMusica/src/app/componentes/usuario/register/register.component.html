@@ -67,6 +67,18 @@
                       class="alerta">Usuario</span> es <strong>Requerido</strong></span>
                 </div>
 
+                <!-- FechaNacimiento -->
+                <div class="form-outline form-white mb-4">
+                  <label class="form-label" for="typeDate">Fecha de Nacimiento</label>
+                  <input type="date" id="typeDate" class="form-control form-control-lg" formControlName="FechaNacimiento"
+                    [(ngModel)]="user.FechaNacimiento"
+                    [class.is-invalid]="form.get('FechaNacimiento')?.invalid && form.get('FechaNacimiento')?.touched"
+                    [class.is-valid]="form.get('FechaNacimiento')?.valid" />
+
+                  <span *ngIf="form.get('FechaNacimiento')?.hasError('required') && form.get('FechaNacimiento')?.touched">El campo <span
+                      class="alerta">FechaNacimiento</span> es <strong>Requerido</strong></span>
+                </div>
+
                 <div class="row">
                   <!-- Correo -->
                   <div class="col">

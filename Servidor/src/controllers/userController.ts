@@ -9,14 +9,15 @@ class UserController {
             req.body.ApellidoMaterno,
             req.body.Usuario,
             req.body.Correo,
-            req.body.Password
+            req.body.Password,
+            req.body.FechaNacimiento
         ]
         await pool.query('CALL crear_usuario (?)', [values]);
         res.json({ message: 'Se guardo un Usuario' });
     }
 
     public async lista(req: Request, res: Response) {
-        const usuario = await pool.query('SELECT * FROM Usuario ORDER BY Registro');
+        const usuario = await pool.query('SELECT * FROM Vista_Usuarios');
         res.json(usuario);
     }
 

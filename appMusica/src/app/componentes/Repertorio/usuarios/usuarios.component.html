@@ -18,6 +18,9 @@
                     <th (click)="setOrder('Usuario')" scope="col">Usuario</th>
                     <th (click)="setOrder('Correo')" scope="col">Correo</th>
                     <th (click)="setOrder('Registro')" scope="col">Registro</th>
+                    <th (click)="setOrder('FechaNacimiento')" scope="col">Fecha Nacimiento</th>
+                    <th (click)="setOrder('Edad')" scope="col">Edad</th>
+                    <th (click)="setOrder('days')" scope="col">Dias para cumpleaños</th>
                     <th (click)="setOrder('Rol')" scope="col">Rol</th>
                 </tr>
             </thead>
@@ -32,6 +35,9 @@
                     <td>{{usuario.Usuario}}</td>
                     <td>{{usuario.Correo}}</td>
                     <td>{{usuario.Registro | date: 'dd / MMMM / yyyy h:mm:ss a'}}</td>
+                    <td>{{usuario.FechaNacimiento | date: 'dd / MMMM / yyyy h:mm:ss a'}}</td>
+                    <td>{{usuario.Edad}}</td>
+                    <td>{{usuario.days}}</td>
                     <td>{{usuario.Rol}}</td>
                 </tr>
             </tbody>

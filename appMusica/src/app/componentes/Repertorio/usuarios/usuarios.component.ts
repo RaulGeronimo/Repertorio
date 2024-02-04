@@ -22,7 +22,7 @@ export class UsuariosComponent implements OnInit {
   search: any;
 
   //Ordenamiento
-  order: string = 'Registro';
+  order: string = 'Nombre';
   reverse: boolean = false;
   caseInsensitive: boolean = false;
   sortedCollection: any[];
@@ -33,7 +33,7 @@ export class UsuariosComponent implements OnInit {
     private router: Router,
     private orderPipe: OrderPipe
   ) {
-    this.sortedCollection = orderPipe.transform(this.Usuarios, 'Registro');
+    this.sortedCollection = orderPipe.transform(this.Usuarios, 'Nombre');
   }
 
   ngOnInit(): void {

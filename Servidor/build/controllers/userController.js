@@ -22,7 +22,8 @@ class UserController {
                 req.body.ApellidoMaterno,
                 req.body.Usuario,
                 req.body.Correo,
-                req.body.Password
+                req.body.Password,
+                req.body.FechaNacimiento
             ];
             yield database_1.default.query('CALL crear_usuario (?)', [values]);
             res.json({ message: 'Se guardo un Usuario' });
@@ -30,7 +31,7 @@ class UserController {
     }
     lista(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuario = yield database_1.default.query('SELECT * FROM Usuario ORDER BY Registro');
+            const usuario = yield database_1.default.query('SELECT * FROM Vista_Usuarios');
             res.json(usuario);
         });
     }

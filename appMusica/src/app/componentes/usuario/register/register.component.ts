@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
     Correo: '',
     Password: '',
     Rol: 0,
+    FechaNacimiento: ''
   };
 
   constructor(
@@ -46,6 +47,7 @@ export class RegisterComponent implements OnInit {
         ],
       ],
       Password: ['', Validators.required],
+      FechaNacimiento: ['', Validators.required],
     });
   }
 

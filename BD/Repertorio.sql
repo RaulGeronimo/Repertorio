@@ -437,15 +437,16 @@ CREATE TABLE Usuario(
     Correo VARCHAR(100) UNIQUE,
     Password TEXT,
     Registro DATETIME,
+    FechaNacimiento DATE,
     Rol INT
 );
 
 /* ----------------------------------------------------------------- LOGIN ----------------------------------------------------------------- */
 DROP PROCEDURE IF EXISTS `crear_usuario`;
 DELIMITER $$
-CREATE PROCEDURE `crear_usuario`(IN Nombre VARCHAR(60), IN ApellidoPaterno VARCHAR(60), IN ApellidoMaterno VARCHAR(60), IN Usuario VARCHAR(60), IN Correo VARCHAR(100), IN Password TEXT)
+CREATE PROCEDURE `crear_usuario`(IN Nombre VARCHAR(60), IN ApellidoPaterno VARCHAR(60), IN ApellidoMaterno VARCHAR(60), IN Usuario VARCHAR(60), IN Correo VARCHAR(100), IN Password TEXT, IN FechaNacimiento DATE)
 BEGIN
-	INSERT INTO Usuario VALUES (NULL, Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Correo, MD5(Password), NOW(), 0);
+	INSERT INTO Usuario VALUES (NULL, Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Correo, MD5(Password), NOW(), FechaNacimiento, 0);
 END$$
 
 DELIMITER ;
@@ -459,3 +460,36 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+/* ----------------------------------------------------------------- Usuarios ----------------------------------------------------------------- */
+CREATE OR REPLACE VIEW
+Vista_Usuarios AS
+SELECT
+    idUsuario,
+	Nombre,
+	ApellidoPaterno,
+	ApellidoMaterno,
+    Usuario,
+    Correo,
+    Registro,
+    FechaNacimiento,
+    Rol,
+    Edad,
+    IF(Cumple = 366, 'Hoy es su Compleaños', CONCAT_WS(' ', 'Faltan', Cumple, 'dias para su cumpleaños')) AS days
+FROM(
+    SELECT
+        idUsuario,
+        Nombre,
+        ApellidoPaterno,
+        ApellidoMaterno,
+        Usuario,
+        Correo,
+        Registro,
+        FechaNacimiento,
+        IF(Rol = 0, 'Invitado','Administrador') Rol, 
+        TIMESTAMPDIFF(Year, FechaNacimiento, NOW()) AS Edad,
+        IF((CONCAT_WS('-', YEAR(NOW()), MONTH(FechaNacimiento), DAY(FechaNacimiento))) > NOW(),
+        (DATEDIFF((CONVERT((CONCAT_WS('-', YEAR(NOW()), MONTH(FechaNacimiento), DAY(FechaNacimiento))), DATE)), NOW())),
+        (DATEDIFF((CONVERT((CONCAT_WS('-', YEAR(ADDDATE(CURDATE(), INTERVAL 1 YEAR)), MONTH(FechaNacimiento), DAY(FechaNacimiento))), DATE)), NOW()))) AS Cumple
+    FROM Usuario
+) U;
