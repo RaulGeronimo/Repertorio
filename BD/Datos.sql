@@ -611,7 +611,8 @@ INSERT INTO `Canciones` VALUES
 (378,'Keys to the Kingdom','00:03:39','2014-06-13','Alternative metal, rap metal, industrial metal, nu metal','Original',4),
 (379,'A Line in the Sand','00:06:36','2014-06-17','Nu metal, Metal alternativo, Alternativa/independiente, Heavy metal, Rock','Original',4),
 (380,'My December','00:04:21','2000-12-15','Rock alternativo, emo rap, piano rock','Original',4),
-(381,'Hit the Floor','00:02:45','2003-03-25','Rap metal, metal alternativo','Original',4);
+(381,'Hit the Floor','00:02:45','2003-03-25','Rap metal, metal alternativo','Original',4),
+(382,'ROADS UNTRAVELED','00:03:49','2012-05-06','Rock alternativo, Alternativa/independiente, Heavy metal','Original',4);
 
 
 
@@ -1065,7 +1066,8 @@ INSERT INTO `Canciones_Album` VALUES
 (445,67,379,12),
 (446,7,380,13),
 (447,57,381,5),
-(448,58,381,5);
+(448,58,381,5),
+(449,55,382,8);
 
 
 
@@ -1241,7 +1243,8 @@ INSERT INTO `Auditorias` VALUES
 (135,'Cancion','Keys to the Kingdom','raul@localhost','2023-09-09 16:49:24','Cancion agregada',378),
 (136,'Cancion','A Line in the Sand','raul@localhost','2023-09-09 16:51:00','Cancion agregada',379),
 (137,'Cancion','My December','raul090700@gmail.com','2023-12-16 19:08:57','Cancion agregada',380),
-(138,'Cancion','Hit the Floor','raul090700@gmail.com','2023-12-16 19:13:24','Cancion agregada',381);
+(138,'Cancion','Hit the Floor','raul090700@gmail.com','2023-12-16 19:13:24','Cancion agregada',381),
+(139,'Canciones','ROADS UNTRAVELED','raul090700@gmail.com','2024-02-04 15:41:28','Cancion agregada',382);
 
 
 
@@ -1249,9 +1252,9 @@ INSERT INTO `Auditorias` VALUES
 
 INSERT INTO `Usuario` VALUES
 (1,'Raúl Gabriel','Gerónimo','Herrera','Raul','raul090700@gmail.com','c90d6d172779ddee6dae9af3aa21d7bc','2023-11-25 10:11:32','2000-09-07',1),
-(2,'Sofia','Ramos','Páez ','Sofibet','sofibet45@gmail.com','e10adc3949ba59abbe56e057f20f883e','2023-11-25 17:11:07','1999-09-05',0),
-/* (3,'Osvaldo ','Torres ','Sánchez ','osvaldo123','osvaldoyts220@gmail.com','2b95659c72eeffc4fcbb084a6a34a70b','2023-11-25 20:06:21',0),
-(4,'Zai','Mia','U','ZJ','bzai5204@gmail.com','33ea63cd09c8f7b2bec2403c2f9f37c1','2023-11-25 20:27:05',0), */
+(2,'Nombre','Paterno','Materno','Usuario','correo@gmail.com','6e7bc035c10d6d628e9067ae9b034d41','2023-11-25 10:15:52','2000-01-01',0),
+(3,'Sofia','Ramos','Páez ','Sofibet','sofibet45@gmail.com','e10adc3949ba59abbe56e057f20f883e','2023-11-25 17:11:07','1999-09-05',0),
+(4,'Zai','Mia','U','ZJ','bzai5204@gmail.com','33ea63cd09c8f7b2bec2403c2f9f37c1','2023-11-25 20:27:05','2004-11-02',0),
 (5,'Jonathan ','Eslava','Caza','jonathan ','jadrian1112@gmail.com','543a28083cb237e9372948c8f77cbfc5','2023-11-25 21:11:03','2000-09-04',0),
 (6,'Luis Manuel','Bastida','Lemus','Lemus','lemus17bl@gmail.com','404b13e6f4601682e70adac2457b2198','2024-02-04 00:40:17','2000-09-17',0),
 (7,'Brian Alejandro','Rodriguez','Cruz','Brian','barc140300@gmail.com','4d236810821e8e83a025f2a83ea31820','2024-02-04 00:41:51','2000-03-14',0);

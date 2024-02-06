@@ -465,7 +465,7 @@ DELIMITER ;
 CREATE OR REPLACE VIEW
 Vista_Usuarios AS
 SELECT
-    idUsuario,
+    IdUsuario,
 	Nombre,
 	ApellidoPaterno,
 	ApellidoMaterno,
@@ -478,7 +478,7 @@ SELECT
     IF(Cumple = 366, 'Hoy es su Compleaños', CONCAT_WS(' ', 'Faltan', Cumple, 'dias para su cumpleaños')) AS days
 FROM(
     SELECT
-        idUsuario,
+        IdUsuario,
         Nombre,
         ApellidoPaterno,
         ApellidoMaterno,
