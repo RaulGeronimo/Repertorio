@@ -79,8 +79,8 @@
               <input style="size: 10px;" type="text" formControlName="Grupo" [(ngModel)]="search" placeholder="Grupo:"
                 class="form-control" [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
                 [class.is-valid]="form.get('idGrupo')?.valid">
-              <select formControlName="idGrupo" [(ngModel)]="cancion.idGrupo" class="form-control form-select"
-                id="inputGroupSelect02"
+              <select *ngIf="search != null || edit" formControlName="idGrupo" [(ngModel)]="cancion.idGrupo"
+                class="form-control form-select" id="inputGroupSelect02"
                 [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
                 [class.is-valid]="form.get('idGrupo')?.valid">
                 <option selected disabled value="">Selecciona un Grupo</option>

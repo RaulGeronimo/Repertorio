@@ -7,6 +7,8 @@
     aria-describedby="addon-wrapping" [(ngModel)]="search" autofocus>
 </div>
 
+<label>Total: {{total}} registros</label>
+
 <div class="container-scroll row">
   <div class="col-md-5 margen">
     <div class="card card-body text-center bg-dark">
@@ -54,8 +56,6 @@
     </div>
   </div>
 
-  <label>Total: {{total}} registros</label>
-
   <div class="col-md-4" *ngFor="let artista of artistas | filter:search" style="margin-bottom: 1.5rem;">
     <div class="card text-center">
       <div class="card-header text-white d-flex justify-content-between align-items-center">
@@ -96,3 +96,4 @@
     </div>
 
   </div>
+</div>

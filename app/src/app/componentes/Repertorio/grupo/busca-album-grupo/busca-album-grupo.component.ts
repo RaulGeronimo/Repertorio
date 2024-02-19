@@ -80,6 +80,7 @@ export class BuscaAlbumGrupoComponent implements OnInit {
             `Álbums del grupo '${this.Grupo.Nombre}'`,
             'Lista de Álbums'
           );
+          localStorage.setItem('idGrupo', this.Grupo.idGrupo!);
         },
         (err) => console.error(err)
       );

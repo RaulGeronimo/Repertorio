@@ -31,6 +31,8 @@ export class AlbumFormComponent implements OnInit {
   };
   edit: boolean = false;
 
+  idGrupo: any;
+
   Grupo: any = [];
   Disquera: any = [];
 
@@ -56,7 +58,7 @@ export class AlbumFormComponent implements OnInit {
       Lanzamiento: ['', Validators.required],
       Grabacion: ['', Validators.required],
       Genero: ['', Validators.required],
-      Portada: ['', [Validators.pattern("https?://.*"), Validators.required]],
+      Portada: ['', [Validators.pattern('https?://.*'), Validators.required]],
     });
   }
 
@@ -64,6 +66,10 @@ export class AlbumFormComponent implements OnInit {
     if (localStorage.getItem('Usuario') == null) {
       this.router.navigate(['login']);
     } else {
+      if (localStorage.getItem('idGrupo') != null) {
+        this.idGrupo = localStorage.getItem('idGrupo');
+        //console.log('Grupo: ' + this.idGrupo)
+      }
       this.obtenerDisquera();
       this.obtenerGrupo();
       const params = this.activatedRoute.snapshot.params;
@@ -86,7 +92,12 @@ export class AlbumFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['repertorio/album']);
+        if (this.idGrupo != null) {
+          this.router.navigate(['repertorio/buscaAlbum_Grupo/' + this.idGrupo]);
+          localStorage.removeItem('idGrupo');
+        } else {
+          this.router.navigate(['repertorio/album']);
+        }
         this.toastr.success(
           `El álbum '${this.album.Nombre}' fue agregado con éxito`,
           'Álbum Agregado'
@@ -99,11 +110,16 @@ export class AlbumFormComponent implements OnInit {
   actualiza() {
     this.album.Usuario = localStorage.getItem('Correo') || '';
     const params = this.activatedRoute.snapshot.params;
-    
+
     this.Service.update(params['idAlbum'], this.album).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['repertorio/album']);
+        if (this.idGrupo != null) {
+          this.router.navigate(['repertorio/buscaAlbum_Grupo/' + this.idGrupo]);
+          localStorage.removeItem('idGrupo');
+        } else {
+          this.router.navigate(['repertorio/album']);
+        }
         this.toastr.info(
           `El álbum '${this.album.Nombre}' fue actualizado con éxito`,
           'Álbum Actualizado'

@@ -32,6 +32,7 @@ export class InstrumetoArtistaFormComponent implements OnInit {
 
   search: any;
   searchGrupo: any;
+  idGrupo: any;
 
   constructor(
     private Service: InstrumentoArtistaService,
@@ -54,6 +55,10 @@ export class InstrumetoArtistaFormComponent implements OnInit {
     if (localStorage.getItem('Usuario') == null) {
       this.router.navigate(['login']);
     } else {
+      if (localStorage.getItem('idGrupo') != null) {
+        this.idGrupo = localStorage.getItem('idGrupo');
+        //console.log('Grupo: ' + this.idGrupo)
+      }
       this.obtenerArtista();
       this.obtenerInstrumento();
       const params = this.activatedRoute.snapshot.params;
@@ -76,7 +81,14 @@ export class InstrumetoArtistaFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['repertorio/instrumento_Artista']);
+        if (this.idGrupo != null) {
+          this.router.navigate([
+            'repertorio/buscaIntegrante_Grupo/' + this.idGrupo,
+          ]);
+          localStorage.removeItem('idGrupo');
+        } else {
+          this.router.navigate(['repertorio/instrumento_Artista']);
+        }
         this.toastr.success(
           'El instrumento fue agregado al artista con éxito',
           'Instrumento Agregado'
@@ -91,7 +103,14 @@ export class InstrumetoArtistaFormComponent implements OnInit {
     this.Service.update(params['Codigo'], this.instrumento_Artista).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['repertorio/instrumento_Artista']);
+        if (this.idGrupo != null) {
+          this.router.navigate([
+            'repertorio/buscaIntegrante_Grupo/' + this.idGrupo,
+          ]);
+          localStorage.removeItem('idGrupo');
+        } else {
+          this.router.navigate(['repertorio/instrumento_Artista']);
+        }
         this.toastr.info(
           'El instrumento fue actualizado con éxito',
           'Instrumento Actualizado'

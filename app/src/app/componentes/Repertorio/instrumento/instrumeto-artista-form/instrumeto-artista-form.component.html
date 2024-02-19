@@ -13,7 +13,7 @@
                 [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
                 [class.is-valid]="form.get('idArtista')?.valid">
 
-              <select formControlName="idArtista" [(ngModel)]="instrumento_Artista.idArtista" class="form-control"
+              <select *ngIf="search != null || edit" formControlName="idArtista" [(ngModel)]="instrumento_Artista.idArtista" class="form-control"
                 id="inputGroupSelect02"
                 [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
                 [class.is-valid]="form.get('idArtista')?.valid">

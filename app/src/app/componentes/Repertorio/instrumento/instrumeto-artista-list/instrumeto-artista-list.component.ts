@@ -28,6 +28,7 @@ export class InstrumetoArtistaListComponent implements OnInit {
       this.router.navigate(['login']);
     } else {
       this.obtenerLista();
+      localStorage.removeItem('idGrupo');
     }
   }
 

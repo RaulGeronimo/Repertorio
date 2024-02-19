@@ -19,7 +19,7 @@
               <!-- <label class="input-group-text" for="inputGroupSelect02">Grupo</label> -->
               <input type="text" formControlName="Grupo" [(ngModel)]="search" placeholder="Grupo:" class="form-control" [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched" [class.is-valid]="form.get('idGrupo')?.valid">
 
-              <select formControlName="idGrupo" [(ngModel)]="album.idGrupo" class="form-control"
+              <select *ngIf="search != null || edit" formControlName="idGrupo" [(ngModel)]="album.idGrupo" class="form-control"
                 id="inputGroupSelect02" [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched" [class.is-valid]="form.get('idGrupo')?.valid">
                 <option selected disabled value="">Selecciona un Grupo</option>
                 <option *ngFor="let grupo of Grupo | filter:search" value="{{grupo.idGrupo}}">{{grupo.Nombre}}</option>
@@ -37,7 +37,7 @@
               <input type="text" formControlName="Disquera" [(ngModel)]="searchDisquera" placeholder="Disquera:"
                 class="form-control" [class.is-invalid]="form.get('idDisquera')?.invalid && form.get('idDisquera')?.touched" [class.is-valid]="form.get('idDisquera')?.valid">
 
-              <select formControlName="idDisquera" [(ngModel)]="album.idDisquera" class="form-control"
+              <select *ngIf="searchDisquera != null || edit" formControlName="idDisquera" [(ngModel)]="album.idDisquera" class="form-control"
                 id="inputGroupSelect01" [class.is-invalid]="form.get('idDisquera')?.invalid && form.get('idDisquera')?.touched" [class.is-valid]="form.get('idDisquera')?.valid">
                 <option selected disabled value="">Selecciona una Disquera</option>
                 <option *ngFor="let disquera of Disquera | filter:searchDisquera" value="{{disquera.idDisquera}}">

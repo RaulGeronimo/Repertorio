@@ -11,8 +11,8 @@
                 [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
                 [class.is-valid]="form.get('idArtista')?.valid">
 
-              <select formControlName="idArtista" [(ngModel)]="artista_Grupo.idArtista" class="form-control"
-                id="inputGroupSelect02"
+              <select *ngIf="search != null || edit" formControlName="idArtista" [(ngModel)]="artista_Grupo.idArtista"
+                class="form-control" id="inputGroupSelect02"
                 [class.is-invalid]="form.get('idArtista')?.invalid && form.get('idArtista')?.touched"
                 [class.is-valid]="form.get('idArtista')?.valid">
                 <option selected disabled value="">Selecciona un Artista</option>
@@ -33,8 +33,8 @@
                 class="form-control" [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
                 [class.is-valid]="form.get('idGrupo')?.valid">
 
-              <select formControlName="idGrupo" [(ngModel)]="artista_Grupo.idGrupo" class="form-control"
-                id="inputGroupSelect01"
+              <select *ngIf="searchGrupo != null || edit" formControlName="idGrupo" [(ngModel)]="artista_Grupo.idGrupo"
+                class="form-control" id="inputGroupSelect01"
                 [class.is-invalid]="form.get('idGrupo')?.invalid && form.get('idGrupo')?.touched"
                 [class.is-valid]="form.get('idGrupo')?.valid">
                 <option selected disabled value="">Selecciona un Grupo</option>

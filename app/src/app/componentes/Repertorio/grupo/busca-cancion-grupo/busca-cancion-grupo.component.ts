@@ -76,6 +76,7 @@ export class BuscaCancionGrupoComponent implements OnInit {
             `Canciones del grupo '${this.Grupo.Nombre}'`,
             'Lista de Canciones'
           );
+          localStorage.setItem('idGrupo', this.Grupo.idGrupo!);
         },
         (err) => console.error(err)
       );

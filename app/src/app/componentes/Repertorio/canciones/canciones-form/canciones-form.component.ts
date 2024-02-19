@@ -27,6 +27,8 @@ export class CancionesFormComponent implements OnInit {
     idGrupo: '',
   };
 
+  idGrupo: any;
+
   search: any;
   Grupo: any = [];
   edit: boolean = false;
@@ -54,6 +56,10 @@ export class CancionesFormComponent implements OnInit {
     if (localStorage.getItem('Usuario') == null) {
       this.router.navigate(['login']);
     } else {
+      if (localStorage.getItem('idGrupo') != null) {
+        this.idGrupo = localStorage.getItem('idGrupo');
+        //console.log('Grupo: ' + this.idGrupo)
+      }
       this.obtenerGrupo();
       const params = this.activatedRoute.snapshot.params;
       if (params['idCancion']) {
@@ -75,7 +81,14 @@ export class CancionesFormComponent implements OnInit {
       (res) => {
         //Llenamos el arreglo con la respuesta
         console.log(res);
-        this.router.navigate(['repertorio/canciones']);
+        if (this.idGrupo != null) {
+          this.router.navigate([
+            'repertorio/buscaCancion_Grupo/' + this.idGrupo,
+          ]);
+          localStorage.removeItem('idGrupo');
+        } else {
+          this.router.navigate(['repertorio/canciones']);
+        }
         this.toastr.success(
           `La canción '${this.cancion.Nombre}' fue agregada con éxito`,
           'Canción Agregada'
@@ -88,11 +101,18 @@ export class CancionesFormComponent implements OnInit {
   actualiza() {
     this.cancion.Usuario = localStorage.getItem('Correo') || '';
     const params = this.activatedRoute.snapshot.params;
-    
+
     this.Service.update(params['idCancion'], this.cancion).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['repertorio/canciones']);
+        if (this.idGrupo != null) {
+          this.router.navigate([
+            'repertorio/buscaCancion_Grupo/' + this.idGrupo,
+          ]);
+          localStorage.removeItem('idGrupo');
+        } else {
+          this.router.navigate(['repertorio/canciones']);
+        }
         this.toastr.info(
           `La canción '${this.cancion.Nombre}' fue actualizada con éxito`,
           'Canción Actualizada'

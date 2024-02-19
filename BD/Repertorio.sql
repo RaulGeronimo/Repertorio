@@ -262,12 +262,13 @@ Artista.NombreArtistico AS Artista,
 Artista.Nombre,
 Artista.Foto,
 Grupo.Nombre AS Grupo,
-Instrumento.Nombre AS Instrumento
+GROUP_CONCAT(Instrumento.Nombre ORDER BY Instrumento.Nombre SEPARATOR ', ' ) AS Instrumento
 FROM Instrumento_Artista
     INNER JOIN Instrumento ON Instrumento.idInstrumento = Instrumento_Artista.idInstrumento
     INNER JOIN Artista_Grupo ON Artista_Grupo.Codigo = Instrumento_Artista.idArtista
     INNER JOIN Artista ON Artista_Grupo.idArtista = Artista.idArtista
     INNER JOIN Grupo ON Artista_Grupo.idGrupo = Grupo.idGrupo
+GROUP BY Instrumento_Artista.idArtista
 ORDER BY Artista.Nombre, Grupo.Nombre, Instrumento.Nombre;
 
 /* --------------------------------------------------------------------- DISQUERA --------------------------------------------------------------------- */
@@ -357,7 +358,7 @@ CASE
     WHEN Canciones.Interpretacion <> 'Original' THEN CONCAT(Canciones.Nombre, ' ( ', Canciones.Interpretacion, ' ) ')
     ELSE Canciones.Nombre
 END AS Nombre,
-GROUP_CONCAT(Album.Nombre ORDER BY Album.Nombre SEPARATOR ', ') AS Albums,
+IFNULL(GROUP_CONCAT(Album.Nombre ORDER BY Album.Nombre SEPARATOR ', '), 'Por Agregar') AS Albums,
 DATE_FORMAT(Canciones.Duracion, "%i:%s") AS Duracion,
 DATE_FORMAT(Canciones.Publicacion, "%Y") AS Publicacion,
 Canciones.Genero,

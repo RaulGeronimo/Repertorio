@@ -65,6 +65,7 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
             `Integrantes del grupo '${this.Grupo.Nombre}'`,
             'Lista de Integrantes'
           );
+          localStorage.setItem('idGrupo', this.Grupo.idGrupo!);
         },
         (err) => console.error(err)
       );
