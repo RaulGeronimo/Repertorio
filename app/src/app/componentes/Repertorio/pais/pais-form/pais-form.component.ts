@@ -49,7 +49,7 @@ export class PaisFormComponent implements OnInit {
         if (params['idPais']) {
           this.paisService.getPais(params['idPais']).subscribe(
             (res) => {
-              console.log(res); //Muestra en consola
+              //console.log(res); //Muestra en consola
               this.pais = res; //Muestra en el navegador
               this.edit = true; //Asignamos que es verdadero
             },
@@ -67,7 +67,7 @@ export class PaisFormComponent implements OnInit {
     this.paisService.createPais(this.pais).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/pais']);
         this.toastr.success(
           `El pais '${this.pais.Nombre}' fue agregado con éxito`,
@@ -83,7 +83,7 @@ export class PaisFormComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     this.paisService.updatePais(params['idPais'], this.pais).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/pais']);
         this.toastr.info(
           `El pais '${this.pais.Nombre}' fue actualizado con éxito`,

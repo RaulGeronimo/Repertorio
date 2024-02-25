@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class DisqueraListComponent implements OnInit {
   //Creamos el arreglo vacio llamado Grupos
   Disqueras: any = [];
-  total: number =0;
+  total: number = 0;
   search: any;
   show: boolean = false;
   Usuario: string = '';
@@ -36,7 +36,7 @@ export class DisqueraListComponent implements OnInit {
   obtenerLista() {
     this.Service.getDisqueras().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.Disqueras = res;
         this.total = this.Disqueras.length;
@@ -44,21 +44,6 @@ export class DisqueraListComponent implements OnInit {
       (err) => console.error(err)
     );
   }
-
-  /* borrar(idDisquera: string) {
-    this.Service.delete(idDisquera).subscribe(
-      (res) => {
-        //Llena el arreglo con la respuesta que enviamos
-        console.log(res);
-        this.obtenerLista();
-        this.toastr.warning(
-          'La disquera fue eliminada con éxito',
-          'Disquera eliminada'
-        );
-      },
-      (err) => console.error(err)
-    );
-  } */
 
   borrar(idDisquera: string) {
     Swal.fire({
@@ -81,7 +66,7 @@ export class DisqueraListComponent implements OnInit {
         this.Service.delete(idDisquera, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'La disquera fue eliminada con éxito',

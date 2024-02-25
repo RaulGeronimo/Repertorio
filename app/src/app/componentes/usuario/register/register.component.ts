@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
     this.Service.create(this.user).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['login']);
         /* this.toastr.success(
           `El usuario '${this.user.Usuario}' fue agregado con éxito`,

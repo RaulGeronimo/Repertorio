@@ -65,7 +65,7 @@ export class InstrumetoArtistaFormComponent implements OnInit {
       if (params['Codigo']) {
         this.Service.getArtista(params['Codigo']).subscribe(
           (res) => {
-            console.log(res); //Muestra en consola
+            //console.log(res); //Muestra en consola
             this.instrumento_Artista = res; //Muestra en el navegador
             this.edit = true; //Asignamos que es verdadero
           },
@@ -80,7 +80,7 @@ export class InstrumetoArtistaFormComponent implements OnInit {
     this.Service.create(this.instrumento_Artista).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         if (this.idGrupo != null) {
           this.router.navigate([
             'repertorio/buscaIntegrante_Grupo/' + this.idGrupo,
@@ -102,7 +102,7 @@ export class InstrumetoArtistaFormComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['Codigo'], this.instrumento_Artista).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         if (this.idGrupo != null) {
           this.router.navigate([
             'repertorio/buscaIntegrante_Grupo/' + this.idGrupo,

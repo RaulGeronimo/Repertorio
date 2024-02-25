@@ -23,7 +23,7 @@ export class InstrumentoListComponent implements OnInit {
     private instrumentosService: InstrumentosService,
     private toastr: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -40,7 +40,7 @@ export class InstrumentoListComponent implements OnInit {
   obtenerInstrumentos() {
     this.instrumentosService.getInstrumentos().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.instrumentos = res;
         this.total = this.instrumentos.length;
@@ -48,21 +48,6 @@ export class InstrumentoListComponent implements OnInit {
       (err) => console.error(err)
     );
   }
-
-  /* borrarInstrumento(idInstrumento: string) {
-    this.instrumentosService.deleteInstrumento(idInstrumento).subscribe(
-      (res) => {
-        //Llena el arreglo con la respuesta que enviamos
-        console.log(res);
-        this.obtenerInstrumentos();
-        this.toastr.warning(
-          'El instrumento fue eliminado con éxito',
-          'Instrumento eliminado'
-        );
-      },
-      (err) => console.error(err)
-    );
-  } */
 
   borrar(idInstrumento: string) {
     Swal.fire({
@@ -82,18 +67,20 @@ export class InstrumentoListComponent implements OnInit {
           'success'
         ) */
         this.Usuario = localStorage.getItem('Correo') || '';
-        this.instrumentosService.deleteInstrumento(idInstrumento, this.Usuario).subscribe(
-          (res) => {
-            //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
-            this.obtenerInstrumentos();
-            this.toastr.warning(
-              'El instrumento fue eliminado con éxito',
-              'Instrumento eliminado'
-            );
-          },
-          (err) => console.error(err)
-        );
+        this.instrumentosService
+          .deleteInstrumento(idInstrumento, this.Usuario)
+          .subscribe(
+            (res) => {
+              //Llena el arreglo con la respuesta que enviamos
+              //console.log(res);
+              this.obtenerInstrumentos();
+              this.toastr.warning(
+                'El instrumento fue eliminado con éxito',
+                'Instrumento eliminado'
+              );
+            },
+            (err) => console.error(err)
+          );
       }
     });
   }

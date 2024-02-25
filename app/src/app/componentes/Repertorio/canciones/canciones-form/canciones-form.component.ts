@@ -65,7 +65,7 @@ export class CancionesFormComponent implements OnInit {
       if (params['idCancion']) {
         this.Service.getCancion(params['idCancion']).subscribe(
           (res) => {
-            console.log(res); //Muestra en consola
+            //console.log(res); //Muestra en consola
             this.cancion = res; //Muestra en el navegador
             this.edit = true; //Asignamos que es verdadero
           },
@@ -80,7 +80,7 @@ export class CancionesFormComponent implements OnInit {
     this.Service.create(this.cancion).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         if (this.idGrupo != null) {
           this.router.navigate([
             'repertorio/buscaCancion_Grupo/' + this.idGrupo,
@@ -104,7 +104,7 @@ export class CancionesFormComponent implements OnInit {
 
     this.Service.update(params['idCancion'], this.cancion).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         if (this.idGrupo != null) {
           this.router.navigate([
             'repertorio/buscaCancion_Grupo/' + this.idGrupo,

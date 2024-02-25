@@ -69,7 +69,7 @@ export class ArtistaGrupoFormComponent implements OnInit {
       if (params['Codigo']) {
         this.Service.getArtista(params['Codigo']).subscribe(
           (res) => {
-            console.log(res); //Muestra en consola
+            //console.log(res); //Muestra en consola
             this.artista_Grupo = res; //Muestra en el navegador
             this.edit = true; //Asignamos que es verdadero
           },
@@ -84,7 +84,7 @@ export class ArtistaGrupoFormComponent implements OnInit {
     this.Service.create(this.artista_Grupo).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/artista_Grupo']);
         this.toastr.success(
           'El artista fue agregado al grupo con éxito',
@@ -101,7 +101,7 @@ export class ArtistaGrupoFormComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['Codigo'], this.artista_Grupo).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/artista_Grupo']);
         this.toastr.info(
           'El artista fue actualizado con éxito',

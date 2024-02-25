@@ -49,7 +49,7 @@ export class InstrumentoFormComponent implements OnInit {
             .getInstrumento(params['idInstrumento'])
             .subscribe(
               (res) => {
-                console.log(res); //Muestra en consola
+                //console.log(res); //Muestra en consola
                 this.instrumentos = res; //Muestra en el navegador
                 this.edit = true; //Asignamos que es verdadero
               },
@@ -67,7 +67,7 @@ export class InstrumentoFormComponent implements OnInit {
     this.instrumentosService.createInstrumento(this.instrumentos).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/instrumento']);
         this.toastr.success(
           `El instrumento '${this.instrumentos.Nombre}' fue agregado con éxito`,
@@ -85,7 +85,7 @@ export class InstrumentoFormComponent implements OnInit {
       .updateInstrumento(params['idInstrumento'], this.instrumentos)
       .subscribe(
         (res) => {
-          console.log(res);
+          //console.log(res);
           this.router.navigate(['repertorio/instrumento']);
           this.toastr.info(
             `El instrumento '${this.instrumentos.Nombre}' fue actualizado con éxito`,

@@ -48,6 +48,7 @@ export class BuscaCancionAlbumComponent implements OnInit {
     } else {
       this.obtenerLista();
       this.obtenerAlbum();
+      localStorage.removeItem('idGrupo');
     }
   }
 
@@ -56,7 +57,7 @@ export class BuscaCancionAlbumComponent implements OnInit {
     if (params['idAlbum']) {
       this.Service.getCancion(params['idAlbum']).subscribe(
         (res) => {
-          console.log(res); //Muestra en consola
+          //console.log(res); //Muestra en consola
           this.Canciones = res; //Muestra en el navegador
         },
         (err) => console.error(err)
@@ -69,12 +70,13 @@ export class BuscaCancionAlbumComponent implements OnInit {
     if (params['idAlbum']) {
       this.AlbumService.getAlbum(params['idAlbum']).subscribe(
         (res) => {
-          console.log(res); //Muestra en consola
+          //console.log(res); //Muestra en consola
           this.Album = res; //Muestra en el navegador
           this.toastr.success(
             `Canciones del álbum '${this.Album.Nombre}'`,
             'Lista de Canciones'
           );
+          localStorage.setItem('idAlbum', this.Album.idAlbum!);
         },
         (err) => console.error(err)
       );
@@ -96,7 +98,7 @@ export class BuscaCancionAlbumComponent implements OnInit {
         this.CancionesAlbumService.delete(idCancion).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'La canción fue eliminada con éxito',

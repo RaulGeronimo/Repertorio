@@ -76,7 +76,7 @@ export class AlbumFormComponent implements OnInit {
       if (params['idAlbum']) {
         this.Service.getAlbum(params['idAlbum']).subscribe(
           (res) => {
-            console.log(res); //Muestra en consola
+            //console.log(res); //Muestra en consola
             this.album = res; //Muestra en el navegador
             this.edit = true; //Asignamos que es verdadero
           },
@@ -91,7 +91,7 @@ export class AlbumFormComponent implements OnInit {
     this.Service.create(this.album).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         if (this.idGrupo != null) {
           this.router.navigate(['repertorio/buscaAlbum_Grupo/' + this.idGrupo]);
           localStorage.removeItem('idGrupo');
@@ -113,7 +113,7 @@ export class AlbumFormComponent implements OnInit {
 
     this.Service.update(params['idAlbum'], this.album).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         if (this.idGrupo != null) {
           this.router.navigate(['repertorio/buscaAlbum_Grupo/' + this.idGrupo]);
           localStorage.removeItem('idGrupo');

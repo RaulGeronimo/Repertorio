@@ -45,7 +45,7 @@ export class AuditoriaComponent implements OnInit {
   obtenerLista() {
     this.service.getLista().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.lista = res;
         this.total = this.lista.length;

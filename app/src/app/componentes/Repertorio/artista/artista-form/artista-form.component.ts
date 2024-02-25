@@ -64,7 +64,7 @@ export class ArtistaFormComponent implements OnInit {
       if (params['idArtista']) {
         this.Service.getArtista(params['idArtista']).subscribe(
           (res) => {
-            console.log(res); //Muestra en consola
+            //console.log(res); //Muestra en consola
             this.artista = res; //Muestra en el navegador
             this.edit = true; //Asignamos que es verdadero
           },
@@ -79,7 +79,7 @@ export class ArtistaFormComponent implements OnInit {
     this.Service.create(this.artista).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/artista']);
         this.toastr.success(
           `El artista '${this.artista.NombreArtistico}' fue agregado con éxito`,
@@ -97,7 +97,7 @@ export class ArtistaFormComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['idArtista'], this.artista).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/artista']);
         this.toastr.info(
           `El artista '${this.artista.NombreArtistico}' fue actualizado con éxito`,

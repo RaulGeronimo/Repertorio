@@ -22,7 +22,7 @@ export class ArtistaGrupoListComponent implements OnInit {
     private Service: ArtistaGrupoService,
     private toastr: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -35,7 +35,7 @@ export class ArtistaGrupoListComponent implements OnInit {
   obtenerLista() {
     this.Service.getArtistas().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.artistas = res;
         this.total = this.artistas.length;
@@ -43,21 +43,6 @@ export class ArtistaGrupoListComponent implements OnInit {
       (err) => console.error(err)
     );
   }
-
-  /* borrar(Codigo: string) {
-    this.Service.delete(Codigo).subscribe(
-      (res) => {
-        //Llena el arreglo con la respuesta que enviamos
-        console.log(res);
-        this.obtenerLista();
-        this.toastr.warning(
-          'El artista fue eliminado con éxito',
-          'Artista eliminado'
-        );
-      },
-      (err) => console.error(err)
-    );
-  } */
 
   borrar(Codigo: string) {
     Swal.fire({
@@ -79,7 +64,7 @@ export class ArtistaGrupoListComponent implements OnInit {
         this.Service.delete(Codigo).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'El artista fue eliminado con éxito',

@@ -25,6 +25,9 @@ export class CancionesAlbumFormComponent implements OnInit {
     Numero: '',
   };
 
+  idGrupo: any;
+  idAlbum: any;
+
   edit: boolean = false;
 
   /* LLAVE FORANEA */
@@ -53,13 +56,21 @@ export class CancionesAlbumFormComponent implements OnInit {
     if (localStorage.getItem('Usuario') == null) {
       this.router.navigate(['login']);
     } else {
+      if (localStorage.getItem('idGrupo') != null) {
+        this.idGrupo = localStorage.getItem('idGrupo');
+        console.log('Grupo: ' + this.idGrupo)
+      }
+      if (localStorage.getItem('idAlbum') != null) {
+        this.idAlbum = localStorage.getItem('idAlbum');
+        console.log('Album: ' + this.idAlbum)
+      }
       this.obtenerCancion();
       this.obtenerAlbum();
       const params = this.activatedRoute.snapshot.params;
       if (params['Codigo']) {
         this.Service.getCancion(params['Codigo']).subscribe(
           (res) => {
-            console.log(res); //Muestra en consola
+            //console.log(res); //Muestra en consola
             this.cancionesAlbum = res; //Muestra en el navegador
             this.edit = true; //Asignamos que es verdadero
           },
@@ -73,8 +84,19 @@ export class CancionesAlbumFormComponent implements OnInit {
     this.Service.create(this.cancionesAlbum).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
-        this.router.navigate(['repertorio/canciones_Album']);
+        //console.log(res);
+        if (this.idGrupo != null) {
+          this.router.navigate([
+            'repertorio/buscaCancion_Grupo/' + this.idGrupo,
+          ]);
+          localStorage.removeItem('idGrupo');
+        }
+        if (this.idAlbum != null) {
+          this.router.navigate(['repertorio/buscaCancion_Album/' + this.idAlbum]);
+          localStorage.removeItem('idAlbum');
+        } else {
+          this.router.navigate(['repertorio/canciones_Album']);
+        }
         this.toastr.success(
           'La canción fue agregada al álbum con éxito',
           'Canción Agregada'
@@ -86,11 +108,16 @@ export class CancionesAlbumFormComponent implements OnInit {
 
   actualiza() {
     const params = this.activatedRoute.snapshot.params;
-    
+
     this.Service.update(params['Codigo'], this.cancionesAlbum).subscribe(
       (res) => {
-        console.log(res);
-        this.router.navigate(['repertorio/canciones_Album']);
+        //console.log(res);
+        if (this.idGrupo != null) {
+          this.router.navigate(['repertorio/buscaAlbum_Grupo/' + this.idGrupo]);
+          localStorage.removeItem('idGrupo');
+        } else {
+          this.router.navigate(['repertorio/canciones_Album']);
+        }
         this.toastr.info(
           'La canción fue actualizada con éxito',
           'Canción Actualizada'

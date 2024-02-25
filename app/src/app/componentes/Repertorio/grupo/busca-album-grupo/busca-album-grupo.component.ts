@@ -52,6 +52,7 @@ export class BuscaAlbumGrupoComponent implements OnInit {
     } else {
       this.obtenerLista();
       this.obtenerGrupo();
+      localStorage.removeItem('idAlbum');
     }
   }
 
@@ -60,7 +61,7 @@ export class BuscaAlbumGrupoComponent implements OnInit {
     if (params['idGrupo']) {
       this.Service.getAlbum(params['idGrupo']).subscribe(
         (res) => {
-          console.log(res); //Muestra en consola
+          //console.log(res); //Muestra en consola
           this.Album = res; //Muestra en el navegador
           this.total = this.Album.length;
         },
@@ -74,7 +75,7 @@ export class BuscaAlbumGrupoComponent implements OnInit {
     if (params['idGrupo']) {
       this.GrupoService.getGrupo(params['idGrupo']).subscribe(
         (res) => {
-          console.log(res); //Muestra en consola
+          //console.log(res); //Muestra en consola
           this.Grupo = res; //Muestra en el navegador
           this.toastr.success(
             `Álbums del grupo '${this.Grupo.Nombre}'`,
@@ -103,7 +104,7 @@ export class BuscaAlbumGrupoComponent implements OnInit {
         this.AlbumService.delete(idAlbum, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'El álbum fue eliminado con éxito',

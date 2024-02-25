@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         if (res[0] != null) {
           this.router.navigate(['repertorio/grupo']);
           this.user = res[0];
-          console.log(res[0]);
+          //console.log(res[0]);
 
           localStorage.setItem('Rol', this.user.Rol.toString());
 

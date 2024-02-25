@@ -47,7 +47,7 @@ export class UsuariosComponent implements OnInit {
   obtenerLista() {
     this.Service.lista().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.Usuarios = res;
         this.total = this.Usuarios.length;

@@ -21,7 +21,7 @@ export class InstrumetoArtistaListComponent implements OnInit {
     private Service: InstrumentoArtistaService,
     private toastr: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -35,7 +35,7 @@ export class InstrumetoArtistaListComponent implements OnInit {
   obtenerLista() {
     this.Service.getArtistas().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.artistas = res;
         this.total = this.artistas.length;
@@ -64,7 +64,7 @@ export class InstrumetoArtistaListComponent implements OnInit {
         this.Service.delete(Codigo).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'El instrumento fue eliminado con éxito',

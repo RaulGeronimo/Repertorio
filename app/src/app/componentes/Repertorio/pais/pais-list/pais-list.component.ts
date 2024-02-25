@@ -23,7 +23,7 @@ export class PaisListComponent implements OnInit {
     private paisService: PaisService,
     private toastr: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -40,7 +40,7 @@ export class PaisListComponent implements OnInit {
   obtenerPaises() {
     this.paisService.getPaises().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.paises = res;
         this.total = this.paises.length;
@@ -48,21 +48,6 @@ export class PaisListComponent implements OnInit {
       (err) => console.error(err)
     );
   }
-
-  /* borrarPais(idPais: string) {
-    this.paisService.deletePais(idPais).subscribe(
-      (res) => {
-        //Llena el arreglo con la respuesta que enviamos
-        console.log(res);
-        this.obtenerPaises();
-        this.toastr.warning(
-          'El pais fue eliminado con éxito',
-          'Pais eliminado'
-        );
-      },
-      (err) => console.error(err)
-    );
-  } */
 
   borrar(idPais: string) {
     Swal.fire({
@@ -85,7 +70,7 @@ export class PaisListComponent implements OnInit {
         this.paisService.deletePais(idPais, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerPaises();
             this.toastr.warning(
               'El pais fue eliminado con éxito',

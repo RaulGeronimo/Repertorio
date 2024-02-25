@@ -301,7 +301,8 @@ INSERT INTO `Album` VALUES
 (100,18,20,'A Moon Shaped Pool','00:52:31','2016-05-08','2014-2016','Art rock, chamber pop, art pop','https://t1.daumcdn.net/cfile/tistory/26684E46584D7A3823'),
 (101,18,19,'Creep','00:03:59','1992-09-21','1992 en Chipping Norton Recording Studios, Oxfordshire, Inglaterra','Rock alternativo, grunge, post-grunge','https://2.bp.blogspot.com/_DhMSy3s7R4g/TOfkyzp-UvI/AAAAAAAAAKo/qyTGvjXpR_Q/s1600/47544.gif.jpg'),
 (102,18,19,'I Might Be Wrong','00:40:41','2001-11-12','28 de mayo del 2001 – 20 de agosto del 2001','Electrónico, Rock Experimental, Rock alternativo','https://i.pinimg.com/originals/48/ea/bf/48eabf3f07bbbc7bc162c97be49f757c.jpg'),
-(103,18,8,'Kid A','00:49:51','2000-10-02','4 de enero de 1999 – 18 de abril de 2000','Art rock, electrónica, rock experimental','https://gifsf.com/files/attach/images/3784216/957/101/004/66967637fbe6449be230a00d50d91f6d.jpg');
+(103,18,8,'Kid A','00:49:51','2000-10-02','4 de enero de 1999 – 18 de abril de 2000','Art rock, electrónica, rock experimental','https://gifsf.com/files/attach/images/3784216/957/101/004/66967637fbe6449be230a00d50d91f6d.jpg'),
+(104,4,4,'Friendly Fire','00:02:57','2024-02-23','2016','Alternativa/independiente','https://e.snmc.io/i/600/s/8aef0c3c10c46324c6a3d78c75f4a944/11831401/linkin-park-friendly-fire-Cover-Art.png');
 
 
 
@@ -706,7 +707,12 @@ INSERT INTO `Canciones` VALUES
 (396,'The Bends','00:04:06','1995-03-13','Rock alternativo','Original',18),
 (397,'Videotape','00:04:04','2007-12-09','Rock Alternativo','Original',18),
 (398,'How to Disappear Completely','00:05:57','2000-09-27','Art rock, post-rock','Original',18),
-(399,'Paranoid Android','00:06:24','1997-05-26','Rock alternativo, art rock, rock progresivo','Original',18);
+(399,'Paranoid Android','00:06:24','1997-05-26','Rock alternativo, art rock, rock progresivo','Original',18),
+(400,'Friendly Fire','00:02:57','2024-02-23','Alternativa/independiente','Original',4),
+(401,'Back in Black','00:04:15','1980-06-25','Hard rock','Original',7),
+(402,'Hells Bells','00:05:13','1980-10-31','Hard rock, Doom metal','Original',7),
+(403,'Shoot to Thrill','00:05:18','1980-07-25','Hard rock','Original',7),
+(404,'You Shook Me All Night Long','00:03:32','1980-08-15','Hard rock','Original',7);
 
 
 
@@ -1180,7 +1186,12 @@ INSERT INTO `Canciones_Album` VALUES
 (465,102,383,8),
 (466,98,384,5),
 (467,98,397,10),
-(468,100,383,11);
+(468,100,383,11),
+(469,104,400,1),
+(470,17,401,6),
+(471,17,402,1),
+(472,17,403,2),
+(473,17,404,7);
 
 
 
@@ -1468,7 +1479,13 @@ INSERT INTO `Auditorias` VALUES
 (246,'Pais','Austria','raul090700@gmail.com','2024-02-12 22:33:07','Pais actualizado',13),
 (247,'Pais','Bélgica','raul090700@gmail.com','2024-02-12 22:33:07','Pais actualizado',14),
 (248,'Pais','Irlanda','raul090700@gmail.com','2024-02-12 22:33:07','Pais actualizado',15),
-(249,'Pais','Nueva Zelanda','raul090700@gmail.com','2024-02-12 22:33:07','Pais actualizado',16);
+(249,'Pais','Nueva Zelanda','raul090700@gmail.com','2024-02-12 22:33:07','Pais actualizado',16),
+(250,'Canciones','Friendly Fire','raul090700@gmail.com','2024-02-24 01:22:02','Cancion agregada',400),
+(251,'Album','Friendly Fire','raul090700@gmail.com','2024-02-24 01:23:53','Album agregado',104),
+(252,'Canciones','Back in Black','raul090700@gmail.com','2024-02-24 01:28:48','Cancion agregada',401),
+(253,'Canciones','Hells Bells','raul090700@gmail.com','2024-02-24 01:36:40','Cancion agregada',402),
+(254,'Canciones','Shoot to Thrill','raul090700@gmail.com','2024-02-24 01:40:03','Cancion agregada',403),
+(255,'Canciones','You Shook Me All Night Long','raul090700@gmail.com','2024-02-24 01:42:52','Cancion agregada',404);
 
 
 

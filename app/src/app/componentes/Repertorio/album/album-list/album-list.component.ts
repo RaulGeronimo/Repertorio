@@ -52,7 +52,7 @@ export class AlbumListComponent implements OnInit {
   obtenerLista() {
     this.Service.getAlbums().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.Albums = res;
         this.total = this.Albums.length;
@@ -77,7 +77,7 @@ export class AlbumListComponent implements OnInit {
         this.Service.delete(idAlbum, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'El álbum fue eliminado con éxito',

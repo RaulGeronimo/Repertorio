@@ -50,7 +50,7 @@ export class CancionesListComponent implements OnInit {
   obtenerLista() {
     this.Service.getCanciones().subscribe(
       (res) => {
-        console.log(res); //Muestra en consola
+        //console.log(res); //Muestra en consola
         //Llena el arreglo con la respuesta que enviamos
         this.Canciones = res;
         this.total = this.Canciones.length;
@@ -75,7 +75,7 @@ export class CancionesListComponent implements OnInit {
         this.Service.delete(idCancion, this.Usuario).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'La canción fue eliminada con éxito',

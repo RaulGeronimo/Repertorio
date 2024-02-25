@@ -29,7 +29,7 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
     private GrupoService: BuscaGrupoService,
     private toastr: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('Usuario') == null) {
@@ -45,7 +45,7 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
     if (params['idGrupo']) {
       this.Service.getIntegrante(params['idGrupo']).subscribe(
         (res) => {
-          console.log(res); //Muestra en consola
+          //console.log(res); //Muestra en consola
           this.artistas = res; //Muestra en el navegador
           this.total = this.artistas.length;
         },
@@ -59,7 +59,7 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
     if (params['idGrupo']) {
       this.GrupoService.getGrupo(params['idGrupo']).subscribe(
         (res) => {
-          console.log(res); //Muestra en consola
+          //console.log(res); //Muestra en consola
           this.Grupo = res; //Muestra en el navegador
           this.toastr.success(
             `Integrantes del grupo '${this.Grupo.Nombre}'`,
@@ -71,21 +71,6 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
       );
     }
   }
-
-  /* borrar(idArtista: string) {
-    this.ArtistaGrupoService.delete(idArtista).subscribe(
-      (res) => {
-        //Llena el arreglo con la respuesta que enviamos
-        console.log(res);
-        this.obtenerLista();
-        this.toastr.warning(
-          'El integrante fue eliminado con éxito',
-          'Integrante eliminado'
-        );
-      },
-      (err) => console.error(err)
-    );
-  } */
 
   borrar(idArtista: string) {
     Swal.fire({
@@ -107,7 +92,7 @@ export class BuscaIntegrantesGrupoComponent implements OnInit {
         this.ArtistaGrupoService.delete(idArtista).subscribe(
           (res) => {
             //Llena el arreglo con la respuesta que enviamos
-            console.log(res);
+            //console.log(res);
             this.obtenerLista();
             this.toastr.warning(
               'El integrante fue eliminado con éxito',

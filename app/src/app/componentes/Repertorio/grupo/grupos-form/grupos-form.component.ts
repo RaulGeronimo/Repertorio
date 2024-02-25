@@ -60,7 +60,7 @@ export class GruposFormComponent implements OnInit {
       if (params['idGrupo']) {
         this.Service.getGrupo(params['idGrupo']).subscribe(
           (res) => {
-            console.log(res); //Muestra en consola
+            //console.log(res); //Muestra en consola
             this.grupo = res; //Muestra en el navegador
             this.edit = true; //Asignamos que es verdadero
           },
@@ -75,7 +75,7 @@ export class GruposFormComponent implements OnInit {
     this.Service.create(this.grupo).subscribe(
       (res) => {
         //Llenamos el arreglo con la respuesta
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/grupo']);
         this.toastr.success(
           `El grupo '${this.grupo.Nombre}' fue agregado con éxito`,
@@ -88,12 +88,12 @@ export class GruposFormComponent implements OnInit {
 
   actualiza() {
     this.grupo.Usuario = localStorage.getItem('Correo') || '';
-    this.grupo.Fin = (this.grupo.Fin != null) ? this.grupo.Fin : '';
+    this.grupo.Fin = this.grupo.Fin != null ? this.grupo.Fin : '';
 
     const params = this.activatedRoute.snapshot.params;
     this.Service.update(params['idGrupo'], this.grupo).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.router.navigate(['repertorio/grupo']);
         this.toastr.info(
           `El grupo '${this.grupo.Nombre}' fue actualizado con éxito`,
